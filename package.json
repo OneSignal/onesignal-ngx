@@ -1,6 +1,12 @@
 {
   "name": "onesignal-ngx",
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
+  "description": "This is a JavaScript module that can be used to easily include OneSignal code in a website or app that uses Angular for its front-end codebase.",
+  "author": "rgomezp",
+  "contributors": [{ "name": "Rodrigo Gomez-Palacio" }],
+  "homepage": "https://onesignal.com",
+  "repository": "https://github.com/OneSignal/onesignal-ngx.git",
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^12.2.0",
     "@angular/core": "^12.2.0"
@@ -14,5 +20,12 @@
   "esm2015": "esm2015/onesignal-onesignal-ngx.js",
   "fesm2015": "fesm2015/onesignal-onesignal-ngx.js",
   "typings": "onesignal-onesignal-ngx.d.ts",
-  "sideEffects": false
+  "sideEffects": false,
+  "keywords": [
+    "onesignal",
+    "push",
+    "notification",
+    "push notification",
+    "angular"
+  ]
 }
