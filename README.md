@@ -1,4 +1,6 @@
 # onesignal-ngx
+[![npm version](https://img.shields.io/npm/v/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx) [![npm downloads](https://img.shields.io/npm/dm/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx)
+
 Angular OneSignal Plugin: Make it easy to integrate OneSignal with your Angular App!
 
 This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website or app that uses Angular for its front-end codebase.
@@ -67,18 +69,30 @@ this.oneSignal.init({ appId: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }).then(() =
 });
 ```
 
-### Options
+### Init Options
 You can pass other [options](https://documentation.onesignal.com/docs/web-push-sdk#init) to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more.
 
 **Service Worker Params**
 You can customize the location and filenames of service worker assets. You are also able to specify the specific scope that your service worker should control. You can read more [here](https://documentation.onesignal.com/docs/onesignal-service-worker-faq#sdk-parameter-reference-for-service-workers).
 
 In this distribution, you can specify the parameters via the following:
+
 | Field                      | Details                                                                                                                |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------|
 | `serviceWorkerParam`       | Use to specify the scope, or the path the service worker has control of.  Example:  `{ scope: "/js/push/onesignal/" }` |
 | `serviceWorkerPath`        | The path to the service worker file.                                                                                   |
 | `serviceWorkerUpdaterPath` | The path to the service worker updater file.                                                                           |
+
+### Service Worker Files
+If you haven't done so already, you will need to add the [OneSignal Service Worker files](https://github.com/OneSignal/OneSignal-Website-SDK/releases/download/https-integration-files/OneSignal-Web-SDK-HTTPS-Integration-Files.zip) to your site ([learn more](https://documentation.onesignal.com/docs/web-push-quickstart#step-6-upload-files)).
+
+The OneSignal SDK files must be publicly accessible. You can put them in your top-level root or a subdirectory. However, if placing the files not on top-level root make sure to specify the path via the service worker params in the init options (see section above).
+
+**Tip:**
+Visit `https://yoursite.com/OneSignalSDKWorker.js` and `https://yoursite.com/OneSignalSDKUpdaterWorker.js` in the address bar to make sure the files are being served successfully.
+
+**Troubleshooting:**
+If you uploaded the files but you cannot access them via your browser search bar, make sure you have told Angular about them via the `assets` param in your `angular.json` file.
 
 ---
 ## OneSignal API
