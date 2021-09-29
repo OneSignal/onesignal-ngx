@@ -1,4 +1,3 @@
-import * as i0 from "@angular/core";
 interface Action<T> {
     (item: T): void;
 }
@@ -63,11 +62,6 @@ interface IInitObject {
     autoRegister?: boolean;
     notificationClickHandlerMatch?: string;
     notificationClickHandlerAction?: string;
-    serviceWorkerParam?: {
-        scope: string;
-    };
-    serviceWorkerPath?: string;
-    serviceWorkerUpdaterPath?: string;
     path?: string;
     [key: string]: any;
 }
@@ -116,7 +110,5 @@ export declare class OneSignalService implements IOneSignalService {
     getEmailId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
     getSMSId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
     sendOutcome(outcomeName: string, outcomeWeight?: number | undefined): Promise<void>;
-    static ɵfac: i0.ɵɵFactoryDeclaration<OneSignalService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<OneSignalService>;
 }
 export {};

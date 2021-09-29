@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
     typeof define === 'function' && define.amd ? define('@onesignal/onesignal-ngx', ['exports', '@angular/core'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.onesignal = global.onesignal || {}, global.onesignal['onesignal-ngx'] = {}), global.ng.core));
-}(this, (function (exports, i0) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.onesignal = global.onesignal || {}, global.onesignal["onesignal-ngx"] = {}), global.ng.core));
+})(this, (function (exports, i0) { 'use strict';
 
     function _interopNamespace(e) {
         if (e && e.__esModule) return e;
@@ -13,14 +13,12 @@
                     var d = Object.getOwnPropertyDescriptor(e, k);
                     Object.defineProperty(n, k, d.get ? d : {
                         enumerable: true,
-                        get: function () {
-                            return e[k];
-                        }
+                        get: function () { return e[k]; }
                     });
                 }
             });
         }
-        n['default'] = e;
+        n["default"] = e;
         return Object.freeze(n);
     }
 
@@ -372,12 +370,12 @@
                     var _a;
                     var name = element.name, args = element.args, promiseResolver = element.promiseResolver;
                     if (!!promiseResolver) {
-                        _this[name].apply(_this, __spreadArray([], __read(args))).then(function (result) {
+                        _this[name].apply(_this, __spread(args)).then(function (result) {
                             promiseResolver(result);
                         });
                     }
                     else {
-                        (_a = window.OneSignal)[name].apply(_a, __spreadArray([], __read(args)));
+                        (_a = window.OneSignal)[name].apply(_a, __spread(args));
                     }
                 });
             };
@@ -1078,14 +1076,13 @@
         ;
         return OneSignalService;
     }());
-    OneSignalService.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OneSignalService, deps: [], target: i0__namespace.ɵɵFactoryTarget.Injectable });
-    OneSignalService.ɵprov = i0__namespace.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OneSignalService, providedIn: 'root' });
-    i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OneSignalService, decorators: [{
-                type: i0.Injectable,
-                args: [{
-                        providedIn: 'root'
-                    }]
-            }], ctorParameters: function () { return []; } });
+    OneSignalService.ɵprov = i0__namespace.ɵɵdefineInjectable({ factory: function OneSignalService_Factory() { return new OneSignalService(); }, token: OneSignalService, providedIn: "root" });
+    OneSignalService.decorators = [
+        { type: i0.Injectable, args: [{
+                    providedIn: 'root'
+                },] }
+    ];
+    OneSignalService.ctorParameters = function () { return []; };
 
     var OnesignalNgxComponent = /** @class */ (function () {
         function OnesignalNgxComponent() {
@@ -1094,34 +1091,26 @@
         };
         return OnesignalNgxComponent;
     }());
-    OnesignalNgxComponent.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxComponent, deps: [], target: i0__namespace.ɵɵFactoryTarget.Component });
-    OnesignalNgxComponent.ɵcmp = i0__namespace.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.2", type: OnesignalNgxComponent, selector: "onesignal-onesignal-ngx", ngImport: i0__namespace, template: "\n    <p>\n      onesignal-ngx works!\n    </p>\n  ", isInline: true });
-    i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxComponent, decorators: [{
-                type: i0.Component,
-                args: [{
-                        selector: 'onesignal-onesignal-ngx',
-                        template: "\n    <p>\n      onesignal-ngx works!\n    </p>\n  ",
-                        styles: []
-                    }]
-            }], ctorParameters: function () { return []; } });
+    OnesignalNgxComponent.decorators = [
+        { type: i0.Component, args: [{
+                    selector: 'lib-onesignal-ngx',
+                    template: "\n    <p>\n      onesignal-ngx works!\n    </p>\n  "
+                },] }
+    ];
+    OnesignalNgxComponent.ctorParameters = function () { return []; };
 
     var OnesignalNgxModule = /** @class */ (function () {
         function OnesignalNgxModule() {
         }
         return OnesignalNgxModule;
     }());
-    OnesignalNgxModule.ɵfac = i0__namespace.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxModule, deps: [], target: i0__namespace.ɵɵFactoryTarget.NgModule });
-    OnesignalNgxModule.ɵmod = i0__namespace.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxModule });
-    OnesignalNgxModule.ɵinj = i0__namespace.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxModule, providers: [], imports: [[]] });
-    i0__namespace.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0__namespace, type: OnesignalNgxModule, decorators: [{
-                type: i0.NgModule,
-                args: [{
-                        declarations: [],
-                        imports: [],
-                        exports: [],
-                        providers: []
-                    }]
-            }] });
+    OnesignalNgxModule.decorators = [
+        { type: i0.NgModule, args: [{
+                    declarations: [OnesignalNgxComponent],
+                    imports: [],
+                    exports: [OnesignalNgxComponent]
+                },] }
+    ];
 
     /*
      * Public API Surface of onesignal-ngx
@@ -1137,5 +1126,5 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 //# sourceMappingURL=onesignal-onesignal-ngx.umd.js.map

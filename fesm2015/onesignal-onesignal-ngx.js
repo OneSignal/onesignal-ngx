@@ -698,53 +698,40 @@ class OneSignalService {
     }
     ;
 }
-OneSignalService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OneSignalService, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-OneSignalService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OneSignalService, providedIn: 'root' });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OneSignalService, decorators: [{
-            type: Injectable,
-            args: [{
-                    providedIn: 'root'
-                }]
-        }], ctorParameters: function () { return []; } });
+OneSignalService.ɵprov = i0.ɵɵdefineInjectable({ factory: function OneSignalService_Factory() { return new OneSignalService(); }, token: OneSignalService, providedIn: "root" });
+OneSignalService.decorators = [
+    { type: Injectable, args: [{
+                providedIn: 'root'
+            },] }
+];
+OneSignalService.ctorParameters = () => [];
 
 class OnesignalNgxComponent {
     constructor() { }
     ngOnInit() {
     }
 }
-OnesignalNgxComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-OnesignalNgxComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.2", type: OnesignalNgxComponent, selector: "onesignal-onesignal-ngx", ngImport: i0, template: `
+OnesignalNgxComponent.decorators = [
+    { type: Component, args: [{
+                selector: 'lib-onesignal-ngx',
+                template: `
     <p>
       onesignal-ngx works!
     </p>
-  `, isInline: true });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxComponent, decorators: [{
-            type: Component,
-            args: [{
-                    selector: 'onesignal-onesignal-ngx',
-                    template: `
-    <p>
-      onesignal-ngx works!
-    </p>
-  `,
-                    styles: []
-                }]
-        }], ctorParameters: function () { return []; } });
+  `
+            },] }
+];
+OnesignalNgxComponent.ctorParameters = () => [];
 
 class OnesignalNgxModule {
 }
-OnesignalNgxModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-OnesignalNgxModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxModule });
-OnesignalNgxModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxModule, providers: [], imports: [[]] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.2", ngImport: i0, type: OnesignalNgxModule, decorators: [{
-            type: NgModule,
-            args: [{
-                    declarations: [],
-                    imports: [],
-                    exports: [],
-                    providers: []
-                }]
-        }] });
+OnesignalNgxModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [OnesignalNgxComponent],
+                imports: [],
+                exports: [OnesignalNgxComponent]
+            },] }
+];
 
 /*
  * Public API Surface of onesignal-ngx
