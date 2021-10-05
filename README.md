@@ -33,7 +33,7 @@ npm install --save onesignal-ngx
 ---
 ## Library setup
 ```js
-import { OneSignalService } from 'onesignal-ngx';
+import { OneSignal } from 'onesignal-ngx';
 ```
 
 Initialize OneSignal with your `appId` via the `options` parameter:
@@ -47,7 +47,7 @@ Initialize OneSignal with your `appId` via the `options` parameter:
 export class AppComponent {
   title = 'angular-example-app';
 
-  constructor(private oneSignal: OneSignalService) {
+  constructor(private oneSignal: OneSignal) {
     this.oneSignal.init({
       appId: "8e7fe838-fbcd-4152-980d-32565a2dcf03",
     });
@@ -100,7 +100,7 @@ If you uploaded the files but you cannot access them via your browser search bar
 This package includes Typescript support.
 
 ```ts
-class OneSignalService {
+class OneSignal {
   init(options: IInitObject): Promise<void>;
   on(event: string, listener: Function): void;
   off(event: string, listener: Function): void;

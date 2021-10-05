@@ -5,7 +5,7 @@ const ONESIGNAL_SDK_ID = 'onesignal-sdk';
 const ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
 const ONESIGNAL_NOT_SETUP_ERROR = 'OneSignal is not setup correctly.';
 const MAX_TIMEOUT = 30;
-class OneSignalService {
+class OneSignal {
     constructor() {
         this.isOneSignalInitialized = false;
         this.ngOneSignalFunctionQueue = [];
@@ -698,13 +698,13 @@ class OneSignalService {
     }
     ;
 }
-OneSignalService.ɵprov = i0.ɵɵdefineInjectable({ factory: function OneSignalService_Factory() { return new OneSignalService(); }, token: OneSignalService, providedIn: "root" });
-OneSignalService.decorators = [
+OneSignal.ɵprov = i0.ɵɵdefineInjectable({ factory: function OneSignal_Factory() { return new OneSignal(); }, token: OneSignal, providedIn: "root" });
+OneSignal.decorators = [
     { type: Injectable, args: [{
                 providedIn: 'root'
             },] }
 ];
-OneSignalService.ctorParameters = () => [];
+OneSignal.ctorParameters = () => [];
 
 class OnesignalNgxComponent {
     constructor() { }
@@ -741,5 +741,5 @@ OnesignalNgxModule.decorators = [
  * Generated bundle index. Do not edit.
  */
 
-export { OneSignalService, OnesignalNgxComponent, OnesignalNgxModule };
+export { OneSignal, OnesignalNgxComponent, OnesignalNgxModule };
 //# sourceMappingURL=onesignal-onesignal-ngx.js.map

@@ -46,7 +46,7 @@ declare global {
         OneSignal: any;
     }
 }
-interface IOneSignalService {
+interface IOneSignal {
     [key: string]: any;
 }
 interface IInitObject {
@@ -65,7 +65,7 @@ interface IInitObject {
     path?: string;
     [key: string]: any;
 }
-export declare class OneSignalService implements IOneSignalService {
+export declare class OneSignal implements IOneSignal {
     private isOneSignalInitialized;
     private ngOneSignalFunctionQueue;
     constructor();

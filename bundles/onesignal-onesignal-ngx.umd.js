@@ -346,8 +346,8 @@
     var ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
     var ONESIGNAL_NOT_SETUP_ERROR = 'OneSignal is not setup correctly.';
     var MAX_TIMEOUT = 30;
-    var OneSignalService = /** @class */ (function () {
-        function OneSignalService() {
+    var OneSignal = /** @class */ (function () {
+        function OneSignal() {
             var _this = this;
             this.isOneSignalInitialized = false;
             this.ngOneSignalFunctionQueue = [];
@@ -386,7 +386,7 @@
             };
         }
         /* P U B L I C */
-        OneSignalService.prototype.init = function (options) {
+        OneSignal.prototype.init = function (options) {
             var _this = this;
             return new Promise(function (resolve) {
                 if (_this.isOneSignalInitialized) {
@@ -408,7 +408,7 @@
                 });
             });
         };
-        OneSignalService.prototype.on = function (event, listener) {
+        OneSignal.prototype.on = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
                     name: "on",
@@ -421,7 +421,7 @@
             });
         };
         ;
-        OneSignalService.prototype.off = function (event, listener) {
+        OneSignal.prototype.off = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
                     name: "off",
@@ -434,7 +434,7 @@
             });
         };
         ;
-        OneSignalService.prototype.once = function (event, listener) {
+        OneSignal.prototype.once = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
                     name: "once",
@@ -447,7 +447,7 @@
             });
         };
         ;
-        OneSignalService.prototype.isPushNotificationsEnabled = function (callback) {
+        OneSignal.prototype.isPushNotificationsEnabled = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -466,7 +466,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showHttpPrompt = function (options) {
+        OneSignal.prototype.showHttpPrompt = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -485,7 +485,7 @@
             });
         };
         ;
-        OneSignalService.prototype.registerForPushNotifications = function (options) {
+        OneSignal.prototype.registerForPushNotifications = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -504,7 +504,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setDefaultNotificationUrl = function (url) {
+        OneSignal.prototype.setDefaultNotificationUrl = function (url) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -523,7 +523,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setDefaultTitle = function (title) {
+        OneSignal.prototype.setDefaultTitle = function (title) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -542,7 +542,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getTags = function (callback) {
+        OneSignal.prototype.getTags = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -561,7 +561,7 @@
             });
         };
         ;
-        OneSignalService.prototype.sendTag = function (key, value, callback) {
+        OneSignal.prototype.sendTag = function (key, value, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -580,7 +580,7 @@
             });
         };
         ;
-        OneSignalService.prototype.sendTags = function (tags, callback) {
+        OneSignal.prototype.sendTags = function (tags, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -599,7 +599,7 @@
             });
         };
         ;
-        OneSignalService.prototype.deleteTag = function (tag) {
+        OneSignal.prototype.deleteTag = function (tag) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -618,7 +618,7 @@
             });
         };
         ;
-        OneSignalService.prototype.deleteTags = function (tags, callback) {
+        OneSignal.prototype.deleteTags = function (tags, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -637,7 +637,7 @@
             });
         };
         ;
-        OneSignalService.prototype.addListenerForNotificationOpened = function (callback) {
+        OneSignal.prototype.addListenerForNotificationOpened = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -656,7 +656,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setSubscription = function (newSubscription) {
+        OneSignal.prototype.setSubscription = function (newSubscription) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -675,7 +675,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showHttpPermissionRequest = function (options) {
+        OneSignal.prototype.showHttpPermissionRequest = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -694,7 +694,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showNativePrompt = function () {
+        OneSignal.prototype.showNativePrompt = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -713,7 +713,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showSlidedownPrompt = function (options) {
+        OneSignal.prototype.showSlidedownPrompt = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -732,7 +732,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showCategorySlidedown = function (options) {
+        OneSignal.prototype.showCategorySlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -751,7 +751,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showSmsSlidedown = function (options) {
+        OneSignal.prototype.showSmsSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -770,7 +770,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showEmailSlidedown = function (options) {
+        OneSignal.prototype.showEmailSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -789,7 +789,7 @@
             });
         };
         ;
-        OneSignalService.prototype.showSmsAndEmailSlidedown = function (options) {
+        OneSignal.prototype.showSmsAndEmailSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -808,7 +808,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getNotificationPermission = function (onComplete) {
+        OneSignal.prototype.getNotificationPermission = function (onComplete) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -827,7 +827,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getUserId = function (callback) {
+        OneSignal.prototype.getUserId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -846,7 +846,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getSubscription = function (callback) {
+        OneSignal.prototype.getSubscription = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -865,7 +865,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setEmail = function (email, options) {
+        OneSignal.prototype.setEmail = function (email, options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -884,7 +884,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setSMSNumber = function (smsNumber, options) {
+        OneSignal.prototype.setSMSNumber = function (smsNumber, options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -903,7 +903,7 @@
             });
         };
         ;
-        OneSignalService.prototype.logoutEmail = function () {
+        OneSignal.prototype.logoutEmail = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -922,7 +922,7 @@
             });
         };
         ;
-        OneSignalService.prototype.logoutSMS = function () {
+        OneSignal.prototype.logoutSMS = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -941,7 +941,7 @@
             });
         };
         ;
-        OneSignalService.prototype.setExternalUserId = function (externalUserId, authHash) {
+        OneSignal.prototype.setExternalUserId = function (externalUserId, authHash) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -960,7 +960,7 @@
             });
         };
         ;
-        OneSignalService.prototype.removeExternalUserId = function () {
+        OneSignal.prototype.removeExternalUserId = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -979,7 +979,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getExternalUserId = function () {
+        OneSignal.prototype.getExternalUserId = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -998,7 +998,7 @@
             });
         };
         ;
-        OneSignalService.prototype.provideUserConsent = function (consent) {
+        OneSignal.prototype.provideUserConsent = function (consent) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -1017,7 +1017,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getEmailId = function (callback) {
+        OneSignal.prototype.getEmailId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -1036,7 +1036,7 @@
             });
         };
         ;
-        OneSignalService.prototype.getSMSId = function (callback) {
+        OneSignal.prototype.getSMSId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -1055,7 +1055,7 @@
             });
         };
         ;
-        OneSignalService.prototype.sendOutcome = function (outcomeName, outcomeWeight) {
+        OneSignal.prototype.sendOutcome = function (outcomeName, outcomeWeight) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
@@ -1074,15 +1074,15 @@
             });
         };
         ;
-        return OneSignalService;
+        return OneSignal;
     }());
-    OneSignalService.ɵprov = i0__namespace.ɵɵdefineInjectable({ factory: function OneSignalService_Factory() { return new OneSignalService(); }, token: OneSignalService, providedIn: "root" });
-    OneSignalService.decorators = [
+    OneSignal.ɵprov = i0__namespace.ɵɵdefineInjectable({ factory: function OneSignal_Factory() { return new OneSignal(); }, token: OneSignal, providedIn: "root" });
+    OneSignal.decorators = [
         { type: i0.Injectable, args: [{
                     providedIn: 'root'
                 },] }
     ];
-    OneSignalService.ctorParameters = function () { return []; };
+    OneSignal.ctorParameters = function () { return []; };
 
     var OnesignalNgxComponent = /** @class */ (function () {
         function OnesignalNgxComponent() {
@@ -1120,7 +1120,7 @@
      * Generated bundle index. Do not edit.
      */
 
-    exports.OneSignalService = OneSignalService;
+    exports.OneSignal = OneSignal;
     exports.OnesignalNgxComponent = OnesignalNgxComponent;
     exports.OnesignalNgxModule = OnesignalNgxModule;
 
