@@ -1,9 +1,9 @@
 # onesignal-ngx
 [![npm version](https://img.shields.io/npm/v/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx) [![npm downloads](https://img.shields.io/npm/dm/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx)
 
-Angular OneSignal Plugin: Make it easy to integrate OneSignal with your Angular App!
+Angular OneSignal Plugin: Make it easy to integrate OneSignal with your Angular website!
 
-This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website or app that uses Angular for its front-end codebase.
+This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website that uses Angular for its front-end codebase.
 
 OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 1,300,000+ businesses to send 5 billion Push Notifications per day.
 
