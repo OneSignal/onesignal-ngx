@@ -9,6 +9,8 @@ OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-
 
 You can find more information on OneSignal [here](https://onesignal.com/).
 
+Read the official [OneSignal blog](https://onesignal.com/blog/how-to-integrate-push-notifications-in-angular/) to lean more about how-to integrate the OneSignal npm package and Angular.
+
 ## Contents
 - [Install](#install)
 - [Usage](#usage)
@@ -17,6 +19,8 @@ You can find more information on OneSignal [here](https://onesignal.com/).
 
 ---
 ## Install
+
+Learn more about the OneSignal (onesignal-ngx) NPM package [here](https://www.npmjs.com/package/onesignal-ngx)
 
 ### Yarn
 
