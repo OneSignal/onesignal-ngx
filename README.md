@@ -1,4 +1,5 @@
-# onesignal-ngx
+<h1 align="center">welcome to onesignal-ngx 👋</h1>
+
 [![npm version](https://img.shields.io/npm/v/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx) [![npm downloads](https://img.shields.io/npm/dm/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx)
 
 Angular OneSignal Plugin: Make it easy to integrate OneSignal with your Angular website!
@@ -8,6 +9,9 @@ This is a JavaScript module that can be used to easily include [OneSignal](https
 OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 1,300,000+ businesses to send 5 billion Push Notifications per day.
 
 You can find more information on OneSignal [here](https://onesignal.com/).
+
+* 🏠 [Homepage](https://onesignal.com)
+* 🖤 [npm](https://www.npmjs.com/package/onesignal-ngx)
 
 ## Contents
 - [Install](#install)
@@ -70,9 +74,9 @@ this.oneSignal.init({ appId: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }).then(() =
 ```
 
 ### Init Options
-You can pass other [options](https://documentation.onesignal.com/docs/web-push-sdk#init) to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more.
+You can pass other options to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more ([full list of initialization options](https://documentation.onesignal.com/docs/web-push-sdk#init)).
 
-**Service Worker Params**
+#### Service Worker Params
 You can customize the location and filenames of service worker assets. You are also able to specify the specific scope that your service worker should control. You can read more [here](https://documentation.onesignal.com/docs/onesignal-service-worker-faq#sdk-parameter-reference-for-service-workers).
 
 In this distribution, you can specify the parameters via the following:
@@ -81,6 +85,17 @@ In this distribution, you can specify the parameters via the following:
 |----------------------------|------------------------------------------------------------------------------------------------------------------------|
 | `serviceWorkerParam`       | Use to specify the scope, or the path the service worker has control of.  Example:  `{ scope: "/js/push/onesignal/" }` |
 | `serviceWorkerPath`        | The path to the service worker file.                                                                                   |
+
+**Example**:
+```js
+this.oneSignal.init({
+   appId: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+   serviceWorkerParam: {
+     scope: '<path scope>'
+   },
+   serviceWorkerPath: '<path>'
+});
+```
 
 ### Service Worker File
 If you haven't done so already, you will need to add the [OneSignal Service Worker file](https://github.com/OneSignal/OneSignal-Website-SDK/files/7585231/OneSignal-Web-SDK-HTTPS-Integration-Files.zip) to your site ([learn more](https://documentation.onesignal.com/docs/web-push-quickstart#step-6-upload-files)).
@@ -146,7 +161,15 @@ See the official [OneSignal WebSDK reference](https://documentation.onesignal.co
 ---
 ## Advanced Usage
 ### Events and Event Listeners
-You can also listen for native OneSignal events like `subscriptionChange`.
+Use listeners to react to OneSignal-related events:
+
+* `subscriptionChange`
+* `permissionPromptDisplay`
+* `notificationPermissionChange`
+* `popoverShown`
+* `customPromptClick`
+* `notificationDisplay`
+* `notificationDismiss`
 
 **Example**
 ```js
@@ -155,6 +178,38 @@ this.oneSignal.on('subscriptionChange', function(isSubscribed) {
 });
 ```
 
-See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-push-sdk) for all available event listeners.
+See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-push-sdk) for more info on the available event listeners.
+
+## Troubleshooting
+
+### Service Worker Issues
+#### Check the `serviceWorker` flag
+In your `angular.json`, see if the `serviceWorker` flag is set to `true`. The flag is used to cause the production build to include some extra service worker files that will conflict with the OneSignal worker if they use the same scope. If your web app depends on this flag being true and hence the Angular service worker (`ngsw-worker.js`) like in PWA setups, you should customize your OneSignal service worker integration to use a different scope than the Angular service worker. Otherwise, they will conflict. This can be done using the service worker OneSignal initialization params documented above. [Click for further details](https://documentation.onesignal.com/docs/troubleshooting-web-push#pwa-or-multiple-service-workers).
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/OneSignal/onesignal-ngx/issues).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## OneSignal
+
+* [Website](https://onesignal.com)
+* Twitter: [@onesignal](https://twitter.com/onesignal)
+* Github: [@OneSignal](https://github.com/OneSignal)
+* LinkedIn: [@onesignal](https://linkedin.com/company/onesignal)
+
+## Discord
+Reach out to us via our [Discord server](https://discord.com/invite/EP7gf6Uz7G)!
+
+## 📝 License
+
+Copyright © 2021 [OneSignal](https://github.com/OneSignal).<br />
+This project is [MIT](https://github.com/OneSignal/onesignal-ngx/blob/main/LICENSE) licensed.
+
 
 Enjoy!
