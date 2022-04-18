@@ -116,9 +116,9 @@ This package includes Typescript support.
 ```ts
 class OneSignal {
   init(options: IInitObject): Promise<void>;
-  on(event: string, listener: Function): void;
-  off(event: string, listener: Function): void;
-  once(event: string, listener: Function): void;
+  on(event: string, listener: () => void): void;
+  off(event: string, listener: () => void): void;
+  once(event: string, listener: () => void): void;
   isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
   showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
   registerForPushNotifications(options?: RegisterOptions): Promise<void>;
