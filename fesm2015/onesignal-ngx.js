@@ -67,7 +67,7 @@ class OneSignal {
     on(event, listener) {
         if (!this.doesOneSignalExist()) {
             this.ngOneSignalFunctionQueue.push({
-                name: "on",
+                name: 'on',
                 args: arguments,
             });
             return;
@@ -76,11 +76,10 @@ class OneSignal {
             window.OneSignal.on(event, listener);
         });
     }
-    ;
     off(event, listener) {
         if (!this.doesOneSignalExist()) {
             this.ngOneSignalFunctionQueue.push({
-                name: "off",
+                name: 'off',
                 args: arguments,
             });
             return;
@@ -89,11 +88,10 @@ class OneSignal {
             window.OneSignal.off(event, listener);
         });
     }
-    ;
     once(event, listener) {
         if (!this.doesOneSignalExist()) {
             this.ngOneSignalFunctionQueue.push({
-                name: "once",
+                name: 'once',
                 args: arguments,
             });
             return;
@@ -102,12 +100,11 @@ class OneSignal {
             window.OneSignal.once(event, listener);
         });
     }
-    ;
     isPushNotificationsEnabled(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "isPushNotificationsEnabled",
+                    name: 'isPushNotificationsEnabled',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -120,12 +117,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showHttpPrompt(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showHttpPrompt",
+                    name: 'showHttpPrompt',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -138,12 +134,11 @@ class OneSignal {
             });
         });
     }
-    ;
     registerForPushNotifications(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "registerForPushNotifications",
+                    name: 'registerForPushNotifications',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -156,12 +151,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setDefaultNotificationUrl(url) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setDefaultNotificationUrl",
+                    name: 'setDefaultNotificationUrl',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -174,12 +168,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setDefaultTitle(title) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setDefaultTitle",
+                    name: 'setDefaultTitle',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -192,12 +185,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getTags(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getTags",
+                    name: 'getTags',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -210,12 +202,11 @@ class OneSignal {
             });
         });
     }
-    ;
     sendTag(key, value, callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "sendTag",
+                    name: 'sendTag',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -228,12 +219,11 @@ class OneSignal {
             });
         });
     }
-    ;
     sendTags(tags, callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "sendTags",
+                    name: 'sendTags',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -246,12 +236,11 @@ class OneSignal {
             });
         });
     }
-    ;
     deleteTag(tag) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "deleteTag",
+                    name: 'deleteTag',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -264,12 +253,11 @@ class OneSignal {
             });
         });
     }
-    ;
     deleteTags(tags, callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "deleteTags",
+                    name: 'deleteTags',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -282,12 +270,11 @@ class OneSignal {
             });
         });
     }
-    ;
     addListenerForNotificationOpened(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "addListenerForNotificationOpened",
+                    name: 'addListenerForNotificationOpened',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -300,12 +287,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setSubscription(newSubscription) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setSubscription",
+                    name: 'setSubscription',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -318,12 +304,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showHttpPermissionRequest(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showHttpPermissionRequest",
+                    name: 'showHttpPermissionRequest',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -336,12 +321,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showNativePrompt() {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showNativePrompt",
+                    name: 'showNativePrompt',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -354,12 +338,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showSlidedownPrompt(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showSlidedownPrompt",
+                    name: 'showSlidedownPrompt',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -372,12 +355,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showCategorySlidedown(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showCategorySlidedown",
+                    name: 'showCategorySlidedown',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -390,12 +372,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showSmsSlidedown(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showSmsSlidedown",
+                    name: 'showSmsSlidedown',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -408,12 +389,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showEmailSlidedown(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showEmailSlidedown",
+                    name: 'showEmailSlidedown',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -426,12 +406,11 @@ class OneSignal {
             });
         });
     }
-    ;
     showSmsAndEmailSlidedown(options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "showSmsAndEmailSlidedown",
+                    name: 'showSmsAndEmailSlidedown',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -444,12 +423,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getNotificationPermission(onComplete) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getNotificationPermission",
+                    name: 'getNotificationPermission',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -462,12 +440,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getUserId(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getUserId",
+                    name: 'getUserId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -480,12 +457,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getSubscription(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getSubscription",
+                    name: 'getSubscription',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -498,12 +474,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setEmail(email, options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setEmail",
+                    name: 'setEmail',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -516,12 +491,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setSMSNumber(smsNumber, options) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setSMSNumber",
+                    name: 'setSMSNumber',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -534,12 +508,11 @@ class OneSignal {
             });
         });
     }
-    ;
     logoutEmail() {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "logoutEmail",
+                    name: 'logoutEmail',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -552,12 +525,11 @@ class OneSignal {
             });
         });
     }
-    ;
     logoutSMS() {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "logoutSMS",
+                    name: 'logoutSMS',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -570,12 +542,11 @@ class OneSignal {
             });
         });
     }
-    ;
     setExternalUserId(externalUserId, authHash) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "setExternalUserId",
+                    name: 'setExternalUserId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -588,12 +559,11 @@ class OneSignal {
             });
         });
     }
-    ;
     removeExternalUserId() {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "removeExternalUserId",
+                    name: 'removeExternalUserId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -606,12 +576,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getExternalUserId() {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getExternalUserId",
+                    name: 'getExternalUserId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -624,12 +593,11 @@ class OneSignal {
             });
         });
     }
-    ;
     provideUserConsent(consent) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "provideUserConsent",
+                    name: 'provideUserConsent',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -642,12 +610,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getEmailId(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getEmailId",
+                    name: 'getEmailId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -660,12 +627,11 @@ class OneSignal {
             });
         });
     }
-    ;
     getSMSId(callback) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "getSMSId",
+                    name: 'getSMSId',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -678,12 +644,11 @@ class OneSignal {
             });
         });
     }
-    ;
     sendOutcome(outcomeName, outcomeWeight) {
         return new Promise((resolve, reject) => {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "sendOutcome",
+                    name: 'sendOutcome',
                     args: arguments,
                     promiseResolver: resolve,
                 });
@@ -696,7 +661,6 @@ class OneSignal {
             });
         });
     }
-    ;
 }
 OneSignal.ɵprov = i0.ɵɵdefineInjectable({ factory: function OneSignal_Factory() { return new OneSignal(); }, token: OneSignal, providedIn: "root" });
 OneSignal.decorators = [
@@ -713,7 +677,7 @@ class OnesignalNgxComponent {
 }
 OnesignalNgxComponent.decorators = [
     { type: Component, args: [{
-                selector: 'lib-onesignal-ngx',
+                selector: 'onesignal-onesignal-ngx',
                 template: `
     <p>
       onesignal-ngx works!
@@ -742,4 +706,4 @@ OnesignalNgxModule.decorators = [
  */
 
 export { OneSignal, OnesignalNgxComponent, OnesignalNgxModule };
-//# sourceMappingURL=onesignal-onesignal-ngx.js.map
+//# sourceMappingURL=onesignal-ngx.js.map
