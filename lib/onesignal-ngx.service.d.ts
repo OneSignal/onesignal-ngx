@@ -1,6 +1,4 @@
-interface Action<T> {
-    (item: T): void;
-}
+declare type Action<T> = (item: T) => void;
 interface AutoPromptOptions {
     force?: boolean;
     forceSlidedownOverNative?: boolean;
@@ -41,28 +39,34 @@ interface IOneSignalTagCategory {
     label: string;
     checked?: boolean;
 }
+interface IInitObject {
+    appId: string;
+    subdomainName?: string;
+    requiresUserPrivacyConsent?: boolean;
+    promptOptions?: object;
+    welcomeNotification?: object;
+    notifyButton?: object;
+    persistNotification?: boolean;
+    webhooks?: object;
+    autoResubscribe?: boolean;
+    autoRegister?: boolean;
+    notificationClickHandlerMatch?: string;
+    notificationClickHandlerAction?: string;
+    serviceWorkerParam?: {
+        scope: string;
+    };
+    serviceWorkerPath?: string;
+    serviceWorkerUpdaterPath?: string;
+    path?: string;
+    allowLocalhostAsSecureOrigin?: boolean;
+    [key: string]: any;
+}
 declare global {
     interface Window {
         OneSignal: any;
     }
 }
 interface IOneSignal {
-    [key: string]: any;
-}
-interface IInitObject {
-    appId: string;
-    subdomainName?: string;
-    requiresUserPrivacyConsent?: boolean;
-    promptOptions?: Object;
-    welcomeNotification?: Object;
-    notifyButton?: Object;
-    persistNotification?: boolean;
-    webhooks?: Object;
-    autoResubscribe?: boolean;
-    autoRegister?: boolean;
-    notificationClickHandlerMatch?: string;
-    notificationClickHandlerAction?: string;
-    path?: string;
     [key: string]: any;
 }
 export declare class OneSignal implements IOneSignal {
@@ -74,9 +78,9 @@ export declare class OneSignal implements IOneSignal {
     private processQueuedOneSignalFunctions;
     private setupOneSignalIfMissing;
     init(options: IInitObject): Promise<void>;
-    on(event: string, listener: Function): void;
-    off(event: string, listener: Function): void;
-    once(event: string, listener: Function): void;
+    on(event: string, listener: () => void): void;
+    off(event: string, listener: () => void): void;
+    once(event: string, listener: () => void): void;
     isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
     showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
     registerForPushNotifications(options?: RegisterOptions): Promise<void>;
@@ -96,7 +100,7 @@ export declare class OneSignal implements IOneSignal {
     showSmsSlidedown(options?: AutoPromptOptions): Promise<void>;
     showEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
     showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-    getNotificationPermission(onComplete?: Function): Promise<NotificationPermission>;
+    getNotificationPermission(onComplete?: Action<NotificationPermission>): Promise<NotificationPermission>;
     getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null>;
     getSubscription(callback?: Action<boolean>): Promise<boolean>;
     setEmail(email: string, options?: SetEmailOptions): Promise<string | null>;

@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('@onesignal/onesignal-ngx', ['exports', '@angular/core'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.onesignal = global.onesignal || {}, global.onesignal["onesignal-ngx"] = {}), global.ng.core));
+    typeof define === 'function' && define.amd ? define('onesignal-ngx', ['exports', '@angular/core'], factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["onesignal-ngx"] = {}, global.ng.core));
 })(this, (function (exports, i0) { 'use strict';
 
     function _interopNamespace(e) {
@@ -411,7 +411,7 @@
         OneSignal.prototype.on = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "on",
+                    name: 'on',
                     args: arguments,
                 });
                 return;
@@ -420,11 +420,10 @@
                 window.OneSignal.on(event, listener);
             });
         };
-        ;
         OneSignal.prototype.off = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "off",
+                    name: 'off',
                     args: arguments,
                 });
                 return;
@@ -433,11 +432,10 @@
                 window.OneSignal.off(event, listener);
             });
         };
-        ;
         OneSignal.prototype.once = function (event, listener) {
             if (!this.doesOneSignalExist()) {
                 this.ngOneSignalFunctionQueue.push({
-                    name: "once",
+                    name: 'once',
                     args: arguments,
                 });
                 return;
@@ -446,13 +444,12 @@
                 window.OneSignal.once(event, listener);
             });
         };
-        ;
         OneSignal.prototype.isPushNotificationsEnabled = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "isPushNotificationsEnabled",
+                        name: 'isPushNotificationsEnabled',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -465,13 +462,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showHttpPrompt = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showHttpPrompt",
+                        name: 'showHttpPrompt',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -484,13 +480,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.registerForPushNotifications = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "registerForPushNotifications",
+                        name: 'registerForPushNotifications',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -503,13 +498,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setDefaultNotificationUrl = function (url) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setDefaultNotificationUrl",
+                        name: 'setDefaultNotificationUrl',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -522,13 +516,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setDefaultTitle = function (title) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setDefaultTitle",
+                        name: 'setDefaultTitle',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -541,13 +534,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getTags = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getTags",
+                        name: 'getTags',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -560,13 +552,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.sendTag = function (key, value, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "sendTag",
+                        name: 'sendTag',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -579,13 +570,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.sendTags = function (tags, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "sendTags",
+                        name: 'sendTags',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -598,13 +588,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.deleteTag = function (tag) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "deleteTag",
+                        name: 'deleteTag',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -617,13 +606,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.deleteTags = function (tags, callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "deleteTags",
+                        name: 'deleteTags',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -636,13 +624,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.addListenerForNotificationOpened = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "addListenerForNotificationOpened",
+                        name: 'addListenerForNotificationOpened',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -655,13 +642,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setSubscription = function (newSubscription) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setSubscription",
+                        name: 'setSubscription',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -674,13 +660,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showHttpPermissionRequest = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showHttpPermissionRequest",
+                        name: 'showHttpPermissionRequest',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -693,13 +678,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showNativePrompt = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showNativePrompt",
+                        name: 'showNativePrompt',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -712,13 +696,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showSlidedownPrompt = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showSlidedownPrompt",
+                        name: 'showSlidedownPrompt',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -731,13 +714,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showCategorySlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showCategorySlidedown",
+                        name: 'showCategorySlidedown',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -750,13 +732,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showSmsSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showSmsSlidedown",
+                        name: 'showSmsSlidedown',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -769,13 +750,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showEmailSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showEmailSlidedown",
+                        name: 'showEmailSlidedown',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -788,13 +768,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.showSmsAndEmailSlidedown = function (options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "showSmsAndEmailSlidedown",
+                        name: 'showSmsAndEmailSlidedown',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -807,13 +786,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getNotificationPermission = function (onComplete) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getNotificationPermission",
+                        name: 'getNotificationPermission',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -826,13 +804,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getUserId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getUserId",
+                        name: 'getUserId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -845,13 +822,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getSubscription = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getSubscription",
+                        name: 'getSubscription',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -864,13 +840,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setEmail = function (email, options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setEmail",
+                        name: 'setEmail',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -883,13 +858,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setSMSNumber = function (smsNumber, options) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setSMSNumber",
+                        name: 'setSMSNumber',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -902,13 +876,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.logoutEmail = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "logoutEmail",
+                        name: 'logoutEmail',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -921,13 +894,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.logoutSMS = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "logoutSMS",
+                        name: 'logoutSMS',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -940,13 +912,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.setExternalUserId = function (externalUserId, authHash) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "setExternalUserId",
+                        name: 'setExternalUserId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -959,13 +930,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.removeExternalUserId = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "removeExternalUserId",
+                        name: 'removeExternalUserId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -978,13 +948,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getExternalUserId = function () {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getExternalUserId",
+                        name: 'getExternalUserId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -997,13 +966,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.provideUserConsent = function (consent) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "provideUserConsent",
+                        name: 'provideUserConsent',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -1016,13 +984,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getEmailId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getEmailId",
+                        name: 'getEmailId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -1035,13 +1002,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.getSMSId = function (callback) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "getSMSId",
+                        name: 'getSMSId',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -1054,13 +1020,12 @@
                 });
             });
         };
-        ;
         OneSignal.prototype.sendOutcome = function (outcomeName, outcomeWeight) {
             var _this = this;
             return new Promise(function (resolve, reject) {
                 if (!_this.doesOneSignalExist()) {
                     _this.ngOneSignalFunctionQueue.push({
-                        name: "sendOutcome",
+                        name: 'sendOutcome',
                         args: arguments,
                         promiseResolver: resolve,
                     });
@@ -1073,7 +1038,6 @@
                 });
             });
         };
-        ;
         return OneSignal;
     }());
     OneSignal.ɵprov = i0__namespace.ɵɵdefineInjectable({ factory: function OneSignal_Factory() { return new OneSignal(); }, token: OneSignal, providedIn: "root" });
@@ -1093,7 +1057,7 @@
     }());
     OnesignalNgxComponent.decorators = [
         { type: i0.Component, args: [{
-                    selector: 'lib-onesignal-ngx',
+                    selector: 'onesignal-onesignal-ngx',
                     template: "\n    <p>\n      onesignal-ngx works!\n    </p>\n  "
                 },] }
     ];
@@ -1127,4 +1091,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-//# sourceMappingURL=onesignal-onesignal-ngx.umd.js.map
+//# sourceMappingURL=onesignal-ngx.umd.js.map
