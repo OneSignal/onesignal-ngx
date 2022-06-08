@@ -78,9 +78,9 @@ export declare class OneSignal implements IOneSignal {
     private processQueuedOneSignalFunctions;
     private setupOneSignalIfMissing;
     init(options: IInitObject): Promise<void>;
-    on(event: string, listener: () => void): void;
-    off(event: string, listener: () => void): void;
-    once(event: string, listener: () => void): void;
+    on(event: string, listener: (eventData?: any) => void): void;
+    off(event: string, listener: (eventData?: any) => void): void;
+    once(event: string, listener: (eventData?: any) => void): void;
     isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
     showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
     registerForPushNotifications(options?: RegisterOptions): Promise<void>;
