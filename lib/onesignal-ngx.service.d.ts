@@ -4,22 +4,6 @@ interface AutoPromptOptions {
     forceSlidedownOverNative?: boolean;
     slidedownPromptOptions?: IOneSignalAutoPromptOptions;
 }
-interface RegisterOptions {
-    modalPrompt?: boolean;
-    httpPermissionRequest?: boolean;
-    slidedown?: boolean;
-    autoAccept?: boolean;
-}
-interface SetSMSOptions {
-    identifierAuthHash?: string;
-}
-interface SetEmailOptions {
-    identifierAuthHash?: string;
-    emailAuthHash?: string;
-}
-interface TagsObject<T> {
-    [key: string]: T;
-}
 interface IOneSignalAutoPromptOptions {
     force?: boolean;
     forceSlidedownOverNative?: boolean;
@@ -39,6 +23,40 @@ interface IOneSignalTagCategory {
     label: string;
     checked?: boolean;
 }
+declare type PushSubscriptionNamespaceProperties = {
+    id: string | null | undefined;
+    token: string | null | undefined;
+    optedIn: boolean;
+};
+declare type SubscriptionChangeEvent = {
+    previous: PushSubscriptionNamespaceProperties;
+    current: PushSubscriptionNamespaceProperties;
+};
+declare type NotificationEventName = 'click' | 'willDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
+interface NotificationButtonData {
+    action?: string;
+    title?: string;
+    icon?: string;
+    url?: string;
+}
+interface StructuredNotification {
+    id: string;
+    content: string;
+    heading?: string;
+    url?: string;
+    data?: object;
+    rr?: string;
+    icon?: string;
+    image?: string;
+    tag?: string;
+    badge?: string;
+    vibrate?: string;
+    buttons?: NotificationButtonData[];
+}
+declare type SlidedownEventName = 'slidedownShown';
+declare type NotificationCallbackType = ((obj: StructuredNotification) => void) | ((obj: {
+    to: NotificationPermission;
+}) => void) | ((obj: (arg: any) => void) => void);
 interface IInitObject {
     appId: string;
     subdomainName?: string;
@@ -63,7 +81,11 @@ interface IInitObject {
 }
 declare global {
     interface Window {
-        OneSignal: any;
+        OneSignalDeferred: any;
+        safari?: {
+            pushNotificationPermission: (permissionData: any) => void;
+            pushNotification: any;
+        };
     }
 }
 interface IOneSignal {
@@ -73,46 +95,51 @@ export declare class OneSignal implements IOneSignal {
     private isOneSignalInitialized;
     private ngOneSignalFunctionQueue;
     constructor();
-    private injectScript;
     private doesOneSignalExist;
+    private handleOnLoad;
+    private handleOnError;
     private processQueuedOneSignalFunctions;
-    private setupOneSignalIfMissing;
+    /**
+     * @PublicApi
+     */
     init(options: IInitObject): Promise<void>;
-    on(event: string, listener: (eventData?: any) => void): void;
-    off(event: string, listener: (eventData?: any) => void): void;
-    once(event: string, listener: (eventData?: any) => void): void;
-    isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
-    showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
-    registerForPushNotifications(options?: RegisterOptions): Promise<void>;
-    setDefaultNotificationUrl(url: string): Promise<void>;
+    /**
+     * @PublicApi
+     */
+    isPushSupported(): boolean;
+    login(externalId: string, token?: string): Promise<void>;
+    logout(): Promise<void>;
+    setConsentGiven(consent: boolean): Promise<void>;
+    setConsentRequired(requiresConsent: boolean): Promise<void>;
+    setDefaultUrl(url: string): Promise<void>;
     setDefaultTitle(title: string): Promise<void>;
-    getTags(callback?: Action<any>): Promise<void>;
-    sendTag(key: string, value: any, callback?: Action<Object>): Promise<Object | null>;
-    sendTags(tags: TagsObject<any>, callback?: Action<Object>): Promise<Object | null>;
-    deleteTag(tag: string): Promise<Array<string>>;
-    deleteTags(tags: Array<string>, callback?: Action<Array<string>>): Promise<Array<string>>;
-    addListenerForNotificationOpened(callback?: Action<Notification>): Promise<void>;
-    setSubscription(newSubscription: boolean): Promise<void>;
-    showHttpPermissionRequest(options?: AutoPromptOptions): Promise<any>;
-    showNativePrompt(): Promise<void>;
-    showSlidedownPrompt(options?: AutoPromptOptions): Promise<void>;
-    showCategorySlidedown(options?: AutoPromptOptions): Promise<void>;
-    showSmsSlidedown(options?: AutoPromptOptions): Promise<void>;
-    showEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-    showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-    getNotificationPermission(onComplete?: Action<NotificationPermission>): Promise<NotificationPermission>;
-    getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null>;
-    getSubscription(callback?: Action<boolean>): Promise<boolean>;
-    setEmail(email: string, options?: SetEmailOptions): Promise<string | null>;
-    setSMSNumber(smsNumber: string, options?: SetSMSOptions): Promise<string | null>;
-    logoutEmail(): Promise<void>;
-    logoutSMS(): Promise<void>;
-    setExternalUserId(externalUserId: string | undefined | null, authHash?: string): Promise<void>;
-    removeExternalUserId(): Promise<void>;
-    getExternalUserId(): Promise<string | undefined | null>;
-    provideUserConsent(consent: boolean): Promise<void>;
-    getEmailId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-    getSMSId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-    sendOutcome(outcomeName: string, outcomeWeight?: number | undefined): Promise<void>;
+    getPermissionStatus(onComplete: Action<NotificationPermission>): Promise<NotificationPermission>;
+    requestPermission(): Promise<void>;
+    addNotificationsEventListener(event: NotificationEventName, listener: NotificationCallbackType): void;
+    removeNotificationsEventListener(event: NotificationEventName, listener: NotificationCallbackType): void;
+    promptPush(options?: AutoPromptOptions): Promise<void>;
+    promptPushCategories(options?: AutoPromptOptions): Promise<void>;
+    promptSms(options?: AutoPromptOptions): Promise<void>;
+    promptEmail(options?: AutoPromptOptions): Promise<void>;
+    promptSmsAndEmail(options?: AutoPromptOptions): Promise<void>;
+    addSlidedownEventListener(event: SlidedownEventName, listener: (wasShown: boolean) => void): void;
+    removeSlidedownEventListener(event: SlidedownEventName, listener: (wasShown: boolean) => void): void;
+    setLogLevel(logLevel: string): void;
+    sendOutcome(outcomeName: string, outcomeWeight?: number): Promise<void>;
+    sendUniqueOutcome(outcomeName: string): Promise<void>;
+    addAlias(label: string, id: string): void;
+    addAliases(aliases: {
+        [key: string]: string;
+    }): void;
+    removeAlias(label: string): void;
+    removeAliases(labels: string[]): void;
+    addEmail(email: string): void;
+    removeEmail(email: string): void;
+    addSms(smsNumber: string): void;
+    removeSms(smsNumber: string): void;
+    optIn(): Promise<void>;
+    optOut(): Promise<void>;
+    addPushSubscriptionEventListener(event: string, listener: (change: SubscriptionChangeEvent) => void): void;
+    removePushSubscriptionEventListener(event: string, listener: (change: SubscriptionChangeEvent) => void): void;
 }
 export {};
