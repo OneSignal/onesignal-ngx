@@ -108,6 +108,9 @@ interface IOneSignalUser {
     removeSms(smsNumber: string): void;
 }
 interface IOneSignalPushSubscription {
+    id: string | null | undefined;
+    token: string | null | undefined;
+    optedIn: boolean | undefined;
     optIn(): Promise<void>;
     optOut(): Promise<void>;
     addEventListener(event: 'subscriptionChange', listener: (change: SubscriptionChangeEvent) => void): void;
@@ -120,6 +123,7 @@ declare function oneSignalSetConsentRequired(requiresConsent: boolean): Promise<
 declare global {
     interface Window {
         OneSignalDeferred?: OneSignalDeferredLoadedCallback[];
+        OneSignal?: IOneSignalOneSignal;
         safari?: {
             pushNotification: any;
         };
