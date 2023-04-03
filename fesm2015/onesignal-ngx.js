@@ -268,6 +268,30 @@ function userRemoveSms(smsNumber) {
         oneSignal.User.removeSms(smsNumber);
     });
 }
+function userAddTag(key, value) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addTag(key, value);
+    });
+}
+function userAddTags(tags) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addTags(tags);
+    });
+}
+function userRemoveTag(key) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeTag(key);
+    });
+}
+function userRemoveTags(keys) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeTags(keys);
+    });
+}
 function pushSubscriptionOptIn() {
     return new Promise((resolve, reject) => {
         var _a;
@@ -330,6 +354,10 @@ const UserNamespace = {
     removeEmail: userRemoveEmail,
     addSms: userAddSms,
     removeSms: userRemoveSms,
+    addTag: userAddTag,
+    addTags: userAddTags,
+    removeTag: userRemoveTag,
+    removeTags: userRemoveTags,
     PushSubscription: PushSubscriptionNamespace,
 };
 const SessionNamespace = {
@@ -371,8 +399,10 @@ let isOneSignalInitialized = false;
 // to disambiguate between a CDN load failure and a delayed call to
 // OneSignal#init.
 let isOneSignalScriptFailed = false;
-window.OneSignalDeferred = window.OneSignalDeferred || [];
-addSDKScript();
+if (window) {
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    addSDKScript();
+}
 /**
  * The following code is copied directly from the native SDK source file BrowserSupportsPush.ts
  * S T A R T

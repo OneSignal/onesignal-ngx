@@ -106,6 +106,12 @@ interface IOneSignalUser {
     removeEmail(email: string): void;
     addSms(smsNumber: string): void;
     removeSms(smsNumber: string): void;
+    addTag(key: string, value: string): void;
+    addTags(tags: {
+        [key: string]: string;
+    }): void;
+    removeTag(key: string): void;
+    removeTags(keys: string[]): void;
 }
 interface IOneSignalPushSubscription {
     id: string | null | undefined;
