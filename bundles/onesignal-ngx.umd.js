@@ -291,6 +291,30 @@
             oneSignal.User.removeSms(smsNumber);
         });
     }
+    function userAddTag(key, value) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.addTag(key, value);
+        });
+    }
+    function userAddTags(tags) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.addTags(tags);
+        });
+    }
+    function userRemoveTag(key) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.removeTag(key);
+        });
+    }
+    function userRemoveTags(keys) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.removeTags(keys);
+        });
+    }
     function pushSubscriptionOptIn() {
         return new Promise(function (resolve, reject) {
             var _a;
@@ -353,6 +377,10 @@
         removeEmail: userRemoveEmail,
         addSms: userAddSms,
         removeSms: userRemoveSms,
+        addTag: userAddTag,
+        addTags: userAddTags,
+        removeTag: userRemoveTag,
+        removeTags: userRemoveTags,
         PushSubscription: PushSubscriptionNamespace,
     };
     var SessionNamespace = {
@@ -394,8 +422,10 @@
     // to disambiguate between a CDN load failure and a delayed call to
     // OneSignal#init.
     var isOneSignalScriptFailed = false;
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    addSDKScript();
+    if (window) {
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        addSDKScript();
+    }
     /**
      * The following code is copied directly from the native SDK source file BrowserSupportsPush.ts
      * S T A R T
