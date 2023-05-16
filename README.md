@@ -1,17 +1,31 @@
 <h1 align="center">welcome to onesignal-ngx 👋</h1>
 
-[![npm version](https://img.shields.io/npm/v/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx) [![npm downloads](https://img.shields.io/npm/dm/onesignal-ngx.svg)](https://www.npmjs.com/package/onesignal-ngx)
+<p>
+  <a href="https://www.npmjs.com/package/onesignal-ngx" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/onesignal-ngx.svg">
+  </a>
+  <a href="https://github.com/OneSignal/onesignal-ngx#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/OneSignal/onesignal-ngx/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://twitter.com/onesignal" target="_blank">
+    <img alt="Twitter: onesignal" src="https://img.shields.io/twitter/follow/onesignal.svg?style=social" />
+  </a>
+</p>
 
-Angular OneSignal Plugin: Make it easy to integrate OneSignal with your Angular website!
-
-This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website that uses Angular for its front-end codebase.
-
-OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 1,300,000+ businesses to send 5 billion Push Notifications per day.
-
-You can find more information on OneSignal [here](https://onesignal.com/).
+> This is a JavaScript module that can be used to easily include [OneSignal](https://onesignal.com/) code in a website that uses Angular for its front-end codebase.
 
 * 🏠 [Homepage](https://onesignal.com)
 * 🖤 [npm](https://www.npmjs.com/package/onesignal-ngx)
+
+OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 2 million+ businesses to send 9 billion Push Notifications per day.
+
+You can find more information on OneSignal [here](https://onesignal.com/).
+
+> 🚧 Version 2 now in Beta!
+See our [migration guide](./MigrationGuide.md) to get started.
 
 > 🚧 Version 2 now in Beta! 
 See our [migration guide](./MigrationGuide.md) to get started.
@@ -77,9 +91,32 @@ this.oneSignal.init({ appId: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }).then(() =
 ```
 
 ### Init Options
-You can pass other options to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more ([full list of initialization options](https://documentation.onesignal.com/docs/web-push-sdk#init)).
+You can pass other options to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more ([full list of initialization options](https://documentation.onesignal.com/v11.0/docs/web-sdk#init)).
 
-#### Service Worker Params
+<details>
+  <summary>Expand to see more options</summary>
+
+  | Property Name               | Type                  | Description                                        |
+| ---------------------------| --------------------- | -------------------------------------------------- |
+| `appId`                     | `string`              | The ID of your OneSignal app.                      |
+| `autoRegister`              | `boolean` (optional)  | Whether or not to automatically register the user. |
+| `autoResubscribe`           | `boolean` (optional)  | Whether or not to automatically resubscribe the user. |
+| `path`                      | `string` (optional)   | The path to the OneSignal service worker file.     |
+| `serviceWorkerPath`         | `string` (optional)   | The path to the OneSignal service worker script.   |
+| `serviceWorkerUpdaterPath`  | `string` (optional)   | The path to the OneSignal service worker updater script. |
+| `subdomainName`             | `string` (optional)   | The subdomain of your OneSignal app.               |
+| `allowLocalhostAsSecureOrigin` | `boolean` (optional) | Whether or not to allow localhost as a secure origin. |
+| `requiresUserPrivacyConsent`| `boolean` (optional)  | Whether or not the user's consent is required.     |
+| `persistNotification`       | `boolean` (optional)  | Whether or not notifications should persist.       |
+| `notificationClickHandlerMatch`| `string` (optional) | The URL match pattern for notification clicks.     |
+| `notificationClickHandlerAction`| `string` (optional)| The action to perform when a notification is clicked. |
+| `welcomeNotification`       | `object` (optional)   | The welcome notification configuration.            |
+| `notifyButton`              | `object` (optional)   | The notify button configuration.                   |
+| `promptOptions`             | `object` (optional)   | Additional options for the subscription prompt.    |
+| `webhooks`                  | `object` (optional)   | The webhook configuration.                         |
+| `[key: string]`             | `any`                 | Additional properties can be added as needed.      |
+
+**Service Worker Params**
 You can customize the location and filenames of service worker assets. You are also able to specify the specific scope that your service worker should control. You can read more [here](https://documentation.onesignal.com/docs/onesignal-service-worker-faq#sdk-parameter-reference-for-service-workers).
 
 In this distribution, you can specify the parameters via the following:
@@ -88,6 +125,10 @@ In this distribution, you can specify the parameters via the following:
 |----------------------------|------------------------------------------------------------------------------------------------------------------------|
 | `serviceWorkerParam`       | Use to specify the scope, or the path the service worker has control of.  Example:  `{ scope: "/js/push/onesignal/" }` |
 | `serviceWorkerPath`        | The path to the service worker file.                                                                                   |
+
+</details>
+
+---
 
 **Example**:
 ```js
@@ -112,76 +153,123 @@ Visit `https://yoursite.com/OneSignalSDKWorker.js` in the address bar to make su
 If you uploaded the file but you cannot access it via your browser search bar, make sure you have told Angular about it via the `assets` param in your `angular.json` file.
 
 ---
-## OneSignal API
 ### Typescript
 This package includes Typescript support.
 
 ```ts
 class OneSignal {
-  init(options: IInitObject): Promise<void>;
-  on(event: string, listener: () => void): void;
-  off(event: string, listener: () => void): void;
-  once(event: string, listener: () => void): void;
-  isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
-  showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
-  registerForPushNotifications(options?: RegisterOptions): Promise<void>;
-  setDefaultNotificationUrl(url: string): Promise<void>;
-  setDefaultTitle(title: string): Promise<void>;
-  getTags(callback?: Action<any>): Promise<void>;
-  sendTag(key: string, value: any, callback?: Action<Object>): Promise<Object | null>;
-  sendTags(tags: TagsObject<any>, callback?: Action<Object>): Promise<Object | null>;
-  deleteTag(tag: string): Promise<Array<string>>;
-  deleteTags(tags: Array<string>, callback?: Action<Array<string>>): Promise<Array<string>>;
-  addListenerForNotificationOpened(callback?: Action<Notification>): Promise<void>;
-  setSubscription(newSubscription: boolean): Promise<void>;
-  showHttpPermissionRequest(options?: AutoPromptOptions): Promise<any>;
-  showNativePrompt(): Promise<void>;
-  showSlidedownPrompt(options?: AutoPromptOptions): Promise<void>;
-  showCategorySlidedown(options?: AutoPromptOptions): Promise<void>;
-  showSmsSlidedown(options?: AutoPromptOptions): Promise<void>;
-  showEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-  showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-  getNotificationPermission(onComplete?: Function): Promise<NotificationPermission>;
-  getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null>;
-  getSubscription(callback?: Action<boolean>): Promise<boolean>;
-  setEmail(email: string, options?: SetEmailOptions): Promise<string | null>;
-  setSMSNumber(smsNumber: string, options?: SetSMSOptions): Promise<string | null>;
-  logoutEmail(): Promise<void>;
-  logoutSMS(): Promise<void>;
-  setExternalUserId(externalUserId: string | undefined | null, authHash?: string): Promise<void>;
-  removeExternalUserId(): Promise<void>;
-  getExternalUserId(): Promise<string | undefined | null>;
-  provideUserConsent(consent: boolean): Promise<void>;
-  getEmailId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-  getSMSId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-  sendOutcome(outcomeName: string, outcomeWeight?: number | undefined): Promise<void>;
+	Slidedown: IOneSignalSlidedown;
+	Notifications: IOneSignalNotifications;
+	Session: IOneSignalSession;
+	User: IOneSignalUser;
+	Debug: IOneSignalDebug;
+	login(externalId: string, jwtToken?: string): Promise<void>;
+	logout(): Promise<void>;
+	init(options: IInitObject): Promise<void>;
+	setConsentGiven(consent: boolean): Promise<void>;
+	setConsentRequired(requiresConsent: boolean): Promise<void>;
 }
 ```
 
 ### OneSignal API
-See the official [OneSignal WebSDK reference](https://documentation.onesignal.com/docs/web-push-sdk) for information on all available SDK functions.
+See the official [OneSignal WebSDK reference](https://documentation.onesignal.com/v11.0/docs/web-sdk) for information on all available SDK functions.
 
 ---
 ## Advanced Usage
 ### Events and Event Listeners
 Use listeners to react to OneSignal-related events:
 
-* `subscriptionChange`
-* `permissionPromptDisplay`
-* `notificationPermissionChange`
-* `popoverShown`
-* `customPromptClick`
-* `notificationDisplay`
-* `notificationDismiss`
+### Notifications Namespace
+| Event Name | Callback Argument Type |
+|-|-|
+|'click'      | NotificationClickResult|
+|'foregroundWillDisplay'| NotificationForegroundWillDisplayEvent
+| 'dismiss'| OSNotificationDataPayload|
+|'permissionChange'| boolean|
+|'permissionPromptDisplay'| void|
+
+<details>
+  <summary>Expand to see associated types</summary>
+
+#### `NotificationClickResult`
+| Property                    | Description                                 |
+|-------------------------|---------------------------------------------|
+| `actionId`              | A string representing the action ID associated with the click event |
+| `url`                   | A string representing the URL associated with the click event |
+
+#### `NotificationForegroundWillDisplayEvent`
+| Property                    | Description                                 |
+|-------------------------|---------------------------------------------|
+| `notification`              | An `OSNotification` type object |
+
+#### `OSNotification`
+| Property              | Description                                                                                                          |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------|
+| `id`                  | Optional string representing the unique identifier of the notification.                                              |
+| `title`               | Optional string representing the title of the notification.                                                          |
+| `body`                | Optional string representing the body of the notification.                                                           |
+| `data`                | Optional data object associated with the notification.                                                               |
+| `url`                 | Optional string representing the URL to be opened when the notification is clicked.                                  |
+| `icon`                | Optional string representing the URL of the icon to be displayed with the notification.                              |
+| `image`               | Optional string representing the URL of the image to be displayed with the notification.                             |
+| `tag`                 | Optional string representing a unique identifier for a group of notifications.                                       |
+| `requireInteraction`  | Optional boolean indicating whether the notification requires user interaction or not.                               |
+| `renotify`            | Optional boolean indicating whether the notification should be replaced or not, if a notification with the same tag is already displayed. |
+| `actions`             | Optional array of `NotificationActionButton` objects representing the action buttons associated with the notification.                         |
+
+#### `NotificationActionButton`
+| Property    | Description                                                                                   |
+|-------------|-----------------------------------------------------------------------------------------------|
+| `action`    | A string representing the action associated with the button.                                 |
+| `title`     | A string representing the title of the button.                                               |
+| `icon`      | Optional string representing the URL of the icon to be displayed with the button.            |
+| `url`       | Optional string representing the URL to be opened when the button is clicked.                |
+
+#### `OSNotificationDataPayload`
+| Property    | Description                                                                                   |
+|-------------|-----------------------------------------------------------------------------------------------|
+| `id`        | A string representing the unique identifier of the notification data payload.                |
+| `content`   | A string representing the content of the notification data payload.                          |
+| `heading`   | Optional string representing the heading of the notification data payload.                   |
+| `url`       | Optional string representing the URL to be opened when the notification data payload is clicked. |
+| `data`      | Optional object containing additional data associated with the notification data payload.     |
+| `rr`        | Optional string with value 'y' or 'n' representing whether or not the notification has [Confirmed Delivery](https://documentation.onesignal.com/docs/confirmed-deliveries).              |
+| `icon`      | Optional string representing the URL of the icon to be displayed with the notification data payload. |
+| `image`     | Optional string representing the URL of the image to be displayed with the notification data payload. |
+| `tag`       | Optional string representing a unique identifier for a group of notification data payloads.   |
+| `badge`     | Optional string representing the URL of the badge to be displayed with the notification data payload. |
+| `vibrate`   | Optional array of numbers representing the vibration pattern of the notification data payload. |
+| `buttons`   | Optional array of `NotificationButtonData` objects representing the button data associated with the notification data payload. |
+
+#### `NotificationButtonData`
+| Property | Description                                                                                          |
+|----------|------------------------------------------------------------------------------------------------------|
+| `url`    | A string representing the URL to be opened when the button is clicked.                                 |
+| `id`     | A string representing the ID of the action.                                                          |
+| `action` | A string representing the type of the action (inherited from `NotificationAction`).                  |
+| `title`  | A string representing the title of the action button (inherited from `NotificationAction`).          |
+| `icon`   | Optional string representing the URL of the icon to be displayed with the action button.              |
+
+</details>
+
+### Slidedown Namespace
+| Event Name | Callback Argument Type |
+|-|-|
+|'slidedownShown'      | boolean |
+
+### Push Subscription Namespace
+| Event Name | Callback Argument Type |
+|-|-|
+|'change'      | boolean |
 
 **Example**
 ```js
-this.oneSignal.on('subscriptionChange', function(isSubscribed) {
-  console.log("The user's subscription state is now:", isSubscribed);
+this.oneSignal.Notifications.addEventListener('click', (result) => {
+  console.log("The notification was clicked!", result);
 });
 ```
 
-See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-push-sdk) for more info on the available event listeners.
+See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/v11.0/docs/web-sdk) for more info on the available event listeners.
 
 ## Troubleshooting
 
@@ -193,7 +281,7 @@ In your `angular.json`, see if the `serviceWorker` flag is set to `true`. The fl
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/OneSignal/onesignal-ngx/issues).
+Contributions, issues and feature requests are welcome!<br/>Feel free to check [issues page](https://github.com/OneSignal/onesignal-ngx/issues).
 
 ## Show your support
 
@@ -211,7 +299,7 @@ Reach out to us via our [Discord server](https://discord.com/invite/EP7gf6Uz7G)!
 
 ## 📝 License
 
-Copyright © 2021 [OneSignal](https://github.com/OneSignal).<br />
+Copyright © 2023 [OneSignal](https://github.com/OneSignal).<br />
 This project is [MIT](https://github.com/OneSignal/onesignal-ngx/blob/main/LICENSE) licensed.
 
 

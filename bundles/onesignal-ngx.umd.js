@@ -24,6 +24,7 @@
 
     var i0__namespace = /*#__PURE__*/_interopNamespace(i0);
 
+    ;
     function oneSignalLogin(externalId, jwtToken) {
         return new Promise(function (resolve, reject) {
             var _a;
@@ -174,19 +175,6 @@
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
                 oneSignal.Notifications.setDefaultTitle(title)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
-            });
-        });
-    }
-    function notificationsGetPermissionStatus(onComplete) {
-        return new Promise(function (resolve, reject) {
-            var _a;
-            if (isOneSignalScriptFailed) {
-                reject();
-            }
-            (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.getPermissionStatus(onComplete)
                     .then(function (value) { return resolve(value); })
                     .catch(function (error) { return reject(error); });
             });
@@ -400,10 +388,11 @@
         removeEventListener: slidedownRemoveEventListener,
     };
     var NotificationsNamespace = {
+        get permissionNative() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.Notifications) === null || _b === void 0 ? void 0 : _b.permissionNative) !== null && _c !== void 0 ? _c : 'default'; },
+        get permission() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.Notifications) === null || _b === void 0 ? void 0 : _b.permission) !== null && _c !== void 0 ? _c : false; },
         setDefaultUrl: notificationsSetDefaultUrl,
         setDefaultTitle: notificationsSetDefaultTitle,
         isPushSupported: isPushSupported,
-        getPermissionStatus: notificationsGetPermissionStatus,
         requestPermission: notificationsRequestPermission,
         addEventListener: notificationsAddEventListener,
         removeEventListener: notificationsRemoveEventListener,

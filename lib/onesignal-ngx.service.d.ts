@@ -1,4 +1,3 @@
-declare type Action<T> = (item: T) => void;
 interface AutoPromptOptions {
     force?: boolean;
     forceSlidedownOverNative?: boolean;
@@ -32,9 +31,60 @@ declare type SubscriptionChangeEvent = {
     previous: PushSubscriptionNamespaceProperties;
     current: PushSubscriptionNamespaceProperties;
 };
-declare type NotificationEventName = 'click' | 'willDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
+declare type NotificationEventName = 'click' | 'foregroundWillDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
+interface NotificationButtonData extends NotificationAction {
+    url: string;
+}
 declare type SlidedownEventName = 'slidedownShown';
 declare type OneSignalDeferredLoadedCallback = (onesignal: IOneSignalOneSignal) => void;
+declare type OSNotification = {
+    id?: string;
+    title?: string;
+    body?: string;
+    data?: any;
+    url?: string;
+    icon?: string;
+    image?: string;
+    tag?: string;
+    requireInteraction?: boolean;
+    renotify?: true;
+    actions?: Array<NotificationActionButton>;
+};
+declare type NotificationActionButton = {
+    action: string;
+    title: string;
+    icon?: string;
+    url?: string;
+};
+export declare type NotificationClickResult = {
+    actionId?: string;
+    url?: string;
+};
+declare type NotificationEventTypeMap = {
+    'click': NotificationClickResult;
+    'foregroundWillDisplay': NotificationForegroundWillDisplayEvent;
+    'dismiss': OSNotificationDataPayload;
+    'permissionChange': boolean;
+    'permissionPromptDisplay': void;
+};
+export declare type NotificationForegroundWillDisplayEvent = {
+    notification: OSNotification;
+    preventDefault(): void;
+};
+declare type OSNotificationDataPayload = {
+    id: string;
+    content: string;
+    heading?: string;
+    url?: string;
+    data?: object;
+    rr?: string;
+    icon?: string;
+    image?: string;
+    tag?: string;
+    badge?: string;
+    vibrate?: VibratePattern;
+    buttons?: NotificationButtonData[];
+};
 interface IInitObject {
     appId: string;
     subdomainName?: string;
@@ -70,13 +120,14 @@ interface IOneSignalOneSignal {
     setConsentRequired(requiresConsent: boolean): Promise<void>;
 }
 interface IOneSignalNotifications {
+    permissionNative: NotificationPermission;
+    permission: boolean;
     setDefaultUrl(url: string): Promise<void>;
     setDefaultTitle(title: string): Promise<void>;
     isPushSupported(): boolean;
-    getPermissionStatus(onComplete: Action<NotificationPermission>): Promise<NotificationPermission>;
     requestPermission(): Promise<void>;
-    addEventListener(event: NotificationEventName, listener: (obj: any) => void): void;
-    removeEventListener(event: NotificationEventName, listener: (obj: any) => void): void;
+    addEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
+    removeEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
 }
 interface IOneSignalSlidedown {
     promptPush(options?: AutoPromptOptions): Promise<void>;
@@ -119,8 +170,8 @@ interface IOneSignalPushSubscription {
     optedIn: boolean | undefined;
     optIn(): Promise<void>;
     optOut(): Promise<void>;
-    addEventListener(event: 'subscriptionChange', listener: (change: SubscriptionChangeEvent) => void): void;
-    removeEventListener(event: 'subscriptionChange', listener: (change: SubscriptionChangeEvent) => void): void;
+    addEventListener(event: 'change', listener: (change: SubscriptionChangeEvent) => void): void;
+    removeEventListener(event: 'change', listener: (change: SubscriptionChangeEvent) => void): void;
 }
 declare function oneSignalLogin(externalId: string, jwtToken?: string): Promise<void>;
 declare function oneSignalLogout(): Promise<void>;
