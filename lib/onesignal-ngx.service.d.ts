@@ -1,24 +1,7 @@
-declare type Action<T> = (item: T) => void;
 interface AutoPromptOptions {
     force?: boolean;
     forceSlidedownOverNative?: boolean;
     slidedownPromptOptions?: IOneSignalAutoPromptOptions;
-}
-interface RegisterOptions {
-    modalPrompt?: boolean;
-    httpPermissionRequest?: boolean;
-    slidedown?: boolean;
-    autoAccept?: boolean;
-}
-interface SetSMSOptions {
-    identifierAuthHash?: string;
-}
-interface SetEmailOptions {
-    identifierAuthHash?: string;
-    emailAuthHash?: string;
-}
-interface TagsObject<T> {
-    [key: string]: T;
 }
 interface IOneSignalAutoPromptOptions {
     force?: boolean;
@@ -39,6 +22,69 @@ interface IOneSignalTagCategory {
     label: string;
     checked?: boolean;
 }
+declare type PushSubscriptionNamespaceProperties = {
+    id: string | null | undefined;
+    token: string | null | undefined;
+    optedIn: boolean;
+};
+declare type SubscriptionChangeEvent = {
+    previous: PushSubscriptionNamespaceProperties;
+    current: PushSubscriptionNamespaceProperties;
+};
+declare type NotificationEventName = 'click' | 'foregroundWillDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
+interface NotificationButtonData extends NotificationAction {
+    url: string;
+}
+declare type SlidedownEventName = 'slidedownShown';
+declare type OneSignalDeferredLoadedCallback = (onesignal: IOneSignalOneSignal) => void;
+declare type OSNotification = {
+    id?: string;
+    title?: string;
+    body?: string;
+    data?: any;
+    url?: string;
+    icon?: string;
+    image?: string;
+    tag?: string;
+    requireInteraction?: boolean;
+    renotify?: true;
+    actions?: Array<NotificationActionButton>;
+};
+declare type NotificationActionButton = {
+    action: string;
+    title: string;
+    icon?: string;
+    url?: string;
+};
+export declare type NotificationClickResult = {
+    actionId?: string;
+    url?: string;
+};
+declare type NotificationEventTypeMap = {
+    'click': NotificationClickResult;
+    'foregroundWillDisplay': NotificationForegroundWillDisplayEvent;
+    'dismiss': OSNotificationDataPayload;
+    'permissionChange': boolean;
+    'permissionPromptDisplay': void;
+};
+export declare type NotificationForegroundWillDisplayEvent = {
+    notification: OSNotification;
+    preventDefault(): void;
+};
+declare type OSNotificationDataPayload = {
+    id: string;
+    content: string;
+    heading?: string;
+    url?: string;
+    data?: object;
+    rr?: string;
+    icon?: string;
+    image?: string;
+    tag?: string;
+    badge?: string;
+    vibrate?: VibratePattern;
+    buttons?: NotificationButtonData[];
+};
 interface IInitObject {
     appId: string;
     subdomainName?: string;
@@ -61,58 +107,103 @@ interface IInitObject {
     allowLocalhostAsSecureOrigin?: boolean;
     [key: string]: any;
 }
+interface IOneSignalOneSignal {
+    Slidedown: IOneSignalSlidedown;
+    Notifications: IOneSignalNotifications;
+    Session: IOneSignalSession;
+    User: IOneSignalUser;
+    Debug: IOneSignalDebug;
+    login(externalId: string, jwtToken?: string): Promise<void>;
+    logout(): Promise<void>;
+    init(options: IInitObject): Promise<void>;
+    setConsentGiven(consent: boolean): Promise<void>;
+    setConsentRequired(requiresConsent: boolean): Promise<void>;
+}
+interface IOneSignalNotifications {
+    permissionNative: NotificationPermission;
+    permission: boolean;
+    setDefaultUrl(url: string): Promise<void>;
+    setDefaultTitle(title: string): Promise<void>;
+    isPushSupported(): boolean;
+    requestPermission(): Promise<void>;
+    addEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
+    removeEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
+}
+interface IOneSignalSlidedown {
+    promptPush(options?: AutoPromptOptions): Promise<void>;
+    promptPushCategories(options?: AutoPromptOptions): Promise<void>;
+    promptSms(options?: AutoPromptOptions): Promise<void>;
+    promptEmail(options?: AutoPromptOptions): Promise<void>;
+    promptSmsAndEmail(options?: AutoPromptOptions): Promise<void>;
+    addEventListener(event: SlidedownEventName, listener: (wasShown: boolean) => void): void;
+    removeEventListener(event: SlidedownEventName, listener: (wasShown: boolean) => void): void;
+}
+interface IOneSignalDebug {
+    setLogLevel(logLevel: string): void;
+}
+interface IOneSignalSession {
+    sendOutcome(outcomeName: string, outcomeWeight?: number): Promise<void>;
+    sendUniqueOutcome(outcomeName: string): Promise<void>;
+}
+interface IOneSignalUser {
+    PushSubscription: IOneSignalPushSubscription;
+    addAlias(label: string, id: string): void;
+    addAliases(aliases: {
+        [key: string]: string;
+    }): void;
+    removeAlias(label: string): void;
+    removeAliases(labels: string[]): void;
+    addEmail(email: string): void;
+    removeEmail(email: string): void;
+    addSms(smsNumber: string): void;
+    removeSms(smsNumber: string): void;
+    addTag(key: string, value: string): void;
+    addTags(tags: {
+        [key: string]: string;
+    }): void;
+    removeTag(key: string): void;
+    removeTags(keys: string[]): void;
+}
+interface IOneSignalPushSubscription {
+    id: string | null | undefined;
+    token: string | null | undefined;
+    optedIn: boolean | undefined;
+    optIn(): Promise<void>;
+    optOut(): Promise<void>;
+    addEventListener(event: 'change', listener: (change: SubscriptionChangeEvent) => void): void;
+    removeEventListener(event: 'change', listener: (change: SubscriptionChangeEvent) => void): void;
+}
+declare function oneSignalLogin(externalId: string, jwtToken?: string): Promise<void>;
+declare function oneSignalLogout(): Promise<void>;
+declare function oneSignalSetConsentGiven(consent: boolean): Promise<void>;
+declare function oneSignalSetConsentRequired(requiresConsent: boolean): Promise<void>;
 declare global {
     interface Window {
-        OneSignal: any;
+        OneSignalDeferred?: OneSignalDeferredLoadedCallback[];
+        OneSignal?: IOneSignalOneSignal;
+        safari?: {
+            pushNotification: any;
+        };
     }
 }
-interface IOneSignal {
+interface IOneSignalOneSignal {
     [key: string]: any;
 }
-export declare class OneSignal implements IOneSignal {
-    private isOneSignalInitialized;
-    private ngOneSignalFunctionQueue;
+export declare class OneSignal implements IOneSignalOneSignal {
+    [key: string]: any;
     constructor();
-    private injectScript;
-    private doesOneSignalExist;
-    private processQueuedOneSignalFunctions;
-    private setupOneSignalIfMissing;
+    /**
+     * @PublicApi
+     */
     init(options: IInitObject): Promise<void>;
-    on(event: string, listener: (eventData?: any) => void): void;
-    off(event: string, listener: (eventData?: any) => void): void;
-    once(event: string, listener: (eventData?: any) => void): void;
-    isPushNotificationsEnabled(callback?: Action<boolean>): Promise<boolean>;
-    showHttpPrompt(options?: AutoPromptOptions): Promise<void>;
-    registerForPushNotifications(options?: RegisterOptions): Promise<void>;
-    setDefaultNotificationUrl(url: string): Promise<void>;
-    setDefaultTitle(title: string): Promise<void>;
-    getTags(callback?: Action<any>): Promise<void>;
-    sendTag(key: string, value: any, callback?: Action<Object>): Promise<Object | null>;
-    sendTags(tags: TagsObject<any>, callback?: Action<Object>): Promise<Object | null>;
-    deleteTag(tag: string): Promise<Array<string>>;
-    deleteTags(tags: Array<string>, callback?: Action<Array<string>>): Promise<Array<string>>;
-    addListenerForNotificationOpened(callback?: Action<Notification>): Promise<void>;
-    setSubscription(newSubscription: boolean): Promise<void>;
-    showHttpPermissionRequest(options?: AutoPromptOptions): Promise<any>;
-    showNativePrompt(): Promise<void>;
-    showSlidedownPrompt(options?: AutoPromptOptions): Promise<void>;
-    showCategorySlidedown(options?: AutoPromptOptions): Promise<void>;
-    showSmsSlidedown(options?: AutoPromptOptions): Promise<void>;
-    showEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-    showSmsAndEmailSlidedown(options?: AutoPromptOptions): Promise<void>;
-    getNotificationPermission(onComplete?: Action<NotificationPermission>): Promise<NotificationPermission>;
-    getUserId(callback?: Action<string | undefined | null>): Promise<string | undefined | null>;
-    getSubscription(callback?: Action<boolean>): Promise<boolean>;
-    setEmail(email: string, options?: SetEmailOptions): Promise<string | null>;
-    setSMSNumber(smsNumber: string, options?: SetSMSOptions): Promise<string | null>;
-    logoutEmail(): Promise<void>;
-    logoutSMS(): Promise<void>;
-    setExternalUserId(externalUserId: string | undefined | null, authHash?: string): Promise<void>;
-    removeExternalUserId(): Promise<void>;
-    getExternalUserId(): Promise<string | undefined | null>;
-    provideUserConsent(consent: boolean): Promise<void>;
-    getEmailId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-    getSMSId(callback?: Action<string | undefined>): Promise<string | null | undefined>;
-    sendOutcome(outcomeName: string, outcomeWeight?: number | undefined): Promise<void>;
+    User: IOneSignalUser;
+    Session: IOneSignalSession;
+    Debug: IOneSignalDebug;
+    Slidedown: IOneSignalSlidedown;
+    Notifications: IOneSignalNotifications;
+    login: typeof oneSignalLogin;
+    logout: typeof oneSignalLogout;
+    setConsentGiven: typeof oneSignalSetConsentGiven;
+    setConsentRequired: typeof oneSignalSetConsentRequired;
 }
 export {};
