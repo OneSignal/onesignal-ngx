@@ -1,663 +1,469 @@
 import * as i0 from '@angular/core';
 import { Injectable, Component, NgModule } from '@angular/core';
 
+function oneSignalLogin(externalId, jwtToken) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.login(externalId, jwtToken)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function oneSignalLogout() {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.logout()
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function oneSignalSetConsentGiven(consent) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.setConsentGiven(consent)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function oneSignalSetConsentRequired(requiresConsent) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.setConsentRequired(requiresConsent)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownPromptPush(options) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Slidedown.promptPush(options)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownPromptPushCategories(options) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Slidedown.promptPushCategories(options)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownPromptSms(options) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Slidedown.promptSms(options)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownPromptEmail(options) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Slidedown.promptEmail(options)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownPromptSmsAndEmail(options) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Slidedown.promptSmsAndEmail(options)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function slidedownAddEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.Slidedown.addEventListener(event, listener);
+    });
+}
+function slidedownRemoveEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.Slidedown.removeEventListener(event, listener);
+    });
+}
+function notificationsSetDefaultUrl(url) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Notifications.setDefaultUrl(url)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function notificationsSetDefaultTitle(title) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Notifications.setDefaultTitle(title)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function notificationsRequestPermission() {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Notifications.requestPermission()
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function notificationsAddEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.Notifications.addEventListener(event, listener);
+    });
+}
+function notificationsRemoveEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.Notifications.removeEventListener(event, listener);
+    });
+}
+function sessionSendOutcome(outcomeName, outcomeWeight) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Session.sendOutcome(outcomeName, outcomeWeight)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function sessionSendUniqueOutcome(outcomeName) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.Session.sendUniqueOutcome(outcomeName)
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function userAddAlias(label, id) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addAlias(label, id);
+    });
+}
+function userAddAliases(aliases) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addAliases(aliases);
+    });
+}
+function userRemoveAlias(label) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeAlias(label);
+    });
+}
+function userRemoveAliases(labels) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeAliases(labels);
+    });
+}
+function userAddEmail(email) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addEmail(email);
+    });
+}
+function userRemoveEmail(email) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeEmail(email);
+    });
+}
+function userAddSms(smsNumber) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addSms(smsNumber);
+    });
+}
+function userRemoveSms(smsNumber) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeSms(smsNumber);
+    });
+}
+function userAddTag(key, value) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addTag(key, value);
+    });
+}
+function userAddTags(tags) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addTags(tags);
+    });
+}
+function userRemoveTag(key) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeTag(key);
+    });
+}
+function userRemoveTags(keys) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeTags(keys);
+    });
+}
+function pushSubscriptionOptIn() {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.User.PushSubscription.optIn()
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function pushSubscriptionOptOut() {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject();
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.User.PushSubscription.optOut()
+                .then((value) => resolve(value))
+                .catch((error) => reject(error));
+        });
+    });
+}
+function pushSubscriptionAddEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.PushSubscription.addEventListener(event, listener);
+    });
+}
+function pushSubscriptionRemoveEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.PushSubscription.removeEventListener(event, listener);
+    });
+}
+function debugSetLogLevel(logLevel) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.Debug.setLogLevel(logLevel);
+    });
+}
+const PushSubscriptionNamespace = {
+    get id() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.PushSubscription) === null || _c === void 0 ? void 0 : _c.id; },
+    get token() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.PushSubscription) === null || _c === void 0 ? void 0 : _c.token; },
+    get optedIn() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.PushSubscription) === null || _c === void 0 ? void 0 : _c.optedIn; },
+    optIn: pushSubscriptionOptIn,
+    optOut: pushSubscriptionOptOut,
+    addEventListener: pushSubscriptionAddEventListener,
+    removeEventListener: pushSubscriptionRemoveEventListener,
+};
+const UserNamespace = {
+    addAlias: userAddAlias,
+    addAliases: userAddAliases,
+    removeAlias: userRemoveAlias,
+    removeAliases: userRemoveAliases,
+    addEmail: userAddEmail,
+    removeEmail: userRemoveEmail,
+    addSms: userAddSms,
+    removeSms: userRemoveSms,
+    addTag: userAddTag,
+    addTags: userAddTags,
+    removeTag: userRemoveTag,
+    removeTags: userRemoveTags,
+    PushSubscription: PushSubscriptionNamespace,
+};
+const SessionNamespace = {
+    sendOutcome: sessionSendOutcome,
+    sendUniqueOutcome: sessionSendUniqueOutcome,
+};
+const DebugNamespace = {
+    setLogLevel: debugSetLogLevel,
+};
+const SlidedownNamespace = {
+    promptPush: slidedownPromptPush,
+    promptPushCategories: slidedownPromptPushCategories,
+    promptSms: slidedownPromptSms,
+    promptEmail: slidedownPromptEmail,
+    promptSmsAndEmail: slidedownPromptSmsAndEmail,
+    addEventListener: slidedownAddEventListener,
+    removeEventListener: slidedownRemoveEventListener,
+};
+const NotificationsNamespace = {
+    get permissionNative() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.Notifications) === null || _b === void 0 ? void 0 : _b.permissionNative) !== null && _c !== void 0 ? _c : 'default'; },
+    get permission() { var _a, _b, _c; return (_c = (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.Notifications) === null || _b === void 0 ? void 0 : _b.permission) !== null && _c !== void 0 ? _c : false; },
+    setDefaultUrl: notificationsSetDefaultUrl,
+    setDefaultTitle: notificationsSetDefaultTitle,
+    isPushSupported,
+    requestPermission: notificationsRequestPermission,
+    addEventListener: notificationsAddEventListener,
+    removeEventListener: notificationsRemoveEventListener,
+};
+/**
+ * @PublicApi
+ */
+function isPushSupported() {
+    return isPushNotificationsSupported();
+}
 const ONESIGNAL_SDK_ID = 'onesignal-sdk';
-const ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/OneSignalSDK.js';
-const ONESIGNAL_NOT_SETUP_ERROR = 'OneSignal is not setup correctly.';
-const MAX_TIMEOUT = 30;
+const ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
+// true if the script is successfully loaded from CDN.
+let isOneSignalInitialized = false;
+// true if the script fails to load from CDN. A separate flag is necessary
+// to disambiguate between a CDN load failure and a delayed call to
+// OneSignal#init.
+let isOneSignalScriptFailed = false;
+if (window) {
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    addSDKScript();
+}
+/**
+ * The following code is copied directly from the native SDK source file BrowserSupportsPush.ts
+ * S T A R T
+ */
+// Checks if the browser supports push notifications by checking if specific
+//   classes and properties on them exist
+function isPushNotificationsSupported() {
+    return supportsVapidPush() || supportsSafariPush();
+}
+function isMacOSSafariInIframe() {
+    // Fallback detection for Safari on macOS in an iframe context
+    return window.top !== window && // isContextIframe
+        navigator.vendor === 'Apple Computer, Inc.' && // isSafari
+        navigator.platform === 'MacIntel'; // isMacOS
+}
+function supportsSafariPush() {
+    return (window.safari && typeof window.safari.pushNotification !== 'undefined') ||
+        isMacOSSafariInIframe();
+}
+// Does the browser support the standard Push API
+function supportsVapidPush() {
+    return typeof PushSubscriptionOptions !== 'undefined' &&
+        PushSubscriptionOptions.prototype.hasOwnProperty('applicationServerKey');
+}
+/* E N D */
+function handleOnError() {
+    isOneSignalScriptFailed = true;
+}
+function addSDKScript() {
+    const script = document.createElement('script');
+    script.id = ONESIGNAL_SDK_ID;
+    script.defer = true;
+    script.src = ONE_SIGNAL_SCRIPT_SRC;
+    // Always resolve whether or not the script is successfully initialized.
+    // This is important for users who may block cdn.onesignal.com w/ adblock.
+    script.onerror = () => {
+        handleOnError();
+    };
+    document.head.appendChild(script);
+}
 class OneSignal {
     constructor() {
-        this.isOneSignalInitialized = false;
-        this.ngOneSignalFunctionQueue = [];
-        /* H E L P E R S */
-        this.injectScript = () => {
-            const script = document.createElement('script');
-            script.id = ONESIGNAL_SDK_ID;
-            script.src = ONE_SIGNAL_SCRIPT_SRC;
-            script.async = true;
-            document.head.appendChild(script);
-        };
-        this.doesOneSignalExist = () => {
-            if (window.OneSignal) {
-                return true;
-            }
-            return false;
-        };
-        this.processQueuedOneSignalFunctions = () => {
-            this.ngOneSignalFunctionQueue.forEach(element => {
-                const { name, args, promiseResolver } = element;
-                if (!!promiseResolver) {
-                    this[name](...args).then((result) => {
-                        promiseResolver(result);
-                    });
-                }
-                else {
-                    window.OneSignal[name](...args);
-                }
-            });
-        };
-        this.setupOneSignalIfMissing = () => {
-            if (!this.doesOneSignalExist()) {
-                window.OneSignal = window.OneSignal || [];
-            }
-        };
+        this.User = UserNamespace;
+        this.Session = SessionNamespace;
+        this.Debug = DebugNamespace;
+        this.Slidedown = SlidedownNamespace;
+        this.Notifications = NotificationsNamespace;
+        this.login = oneSignalLogin;
+        this.logout = oneSignalLogout;
+        this.setConsentGiven = oneSignalSetConsentGiven;
+        this.setConsentRequired = oneSignalSetConsentRequired;
     }
     /* P U B L I C */
+    /**
+     * @PublicApi
+     */
     init(options) {
-        return new Promise(resolve => {
-            if (this.isOneSignalInitialized) {
-                return;
-            }
-            this.injectScript();
-            this.setupOneSignalIfMissing();
-            window.OneSignal.push(() => {
-                window.OneSignal.init(options);
-            });
-            const timeout = setTimeout(() => {
-                console.error(ONESIGNAL_NOT_SETUP_ERROR);
-            }, MAX_TIMEOUT * 1000);
-            window.OneSignal.push(() => {
-                clearTimeout(timeout);
-                this.isOneSignalInitialized = true;
-                this.processQueuedOneSignalFunctions();
-                resolve();
-            });
-        });
-    }
-    on(event, listener) {
-        if (!this.doesOneSignalExist()) {
-            this.ngOneSignalFunctionQueue.push({
-                name: 'on',
-                args: arguments,
-            });
-            return;
+        if (isOneSignalInitialized) {
+            return Promise.reject(`OneSignal is already initialized.`);
         }
-        window.OneSignal.push(() => {
-            window.OneSignal.on(event, listener);
-        });
-    }
-    off(event, listener) {
-        if (!this.doesOneSignalExist()) {
-            this.ngOneSignalFunctionQueue.push({
-                name: 'off',
-                args: arguments,
-            });
-            return;
+        if (!options || !options.appId) {
+            throw new Error('You need to provide your OneSignal appId.');
         }
-        window.OneSignal.push(() => {
-            window.OneSignal.off(event, listener);
-        });
-    }
-    once(event, listener) {
-        if (!this.doesOneSignalExist()) {
-            this.ngOneSignalFunctionQueue.push({
-                name: 'once',
-                args: arguments,
-            });
-            return;
+        if (!document) {
+            return Promise.reject(`Document is not defined.`);
         }
-        window.OneSignal.push(() => {
-            window.OneSignal.once(event, listener);
-        });
-    }
-    isPushNotificationsEnabled(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'isPushNotificationsEnabled',
-                    args: arguments,
-                    promiseResolver: resolve,
+        return new Promise((resolve) => {
+            var _a;
+            (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+                oneSignal.init(options).then(() => {
+                    isOneSignalInitialized = true;
+                    resolve();
                 });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.isPushNotificationsEnabled(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showHttpPrompt(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showHttpPrompt',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showHttpPrompt(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    registerForPushNotifications(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'registerForPushNotifications',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.registerForPushNotifications(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setDefaultNotificationUrl(url) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setDefaultNotificationUrl',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setDefaultNotificationUrl(url)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setDefaultTitle(title) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setDefaultTitle',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setDefaultTitle(title)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getTags(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getTags',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getTags(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    sendTag(key, value, callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'sendTag',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.sendTag(key, value, callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    sendTags(tags, callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'sendTags',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.sendTags(tags, callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    deleteTag(tag) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'deleteTag',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.deleteTag(tag)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    deleteTags(tags, callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'deleteTags',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.deleteTags(tags, callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    addListenerForNotificationOpened(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'addListenerForNotificationOpened',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.addListenerForNotificationOpened(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setSubscription(newSubscription) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setSubscription',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setSubscription(newSubscription)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showHttpPermissionRequest(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showHttpPermissionRequest',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showHttpPermissionRequest(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showNativePrompt() {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showNativePrompt',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showNativePrompt()
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showSlidedownPrompt(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showSlidedownPrompt',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showSlidedownPrompt(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showCategorySlidedown(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showCategorySlidedown',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showCategorySlidedown(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showSmsSlidedown(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showSmsSlidedown',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showSmsSlidedown(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showEmailSlidedown(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showEmailSlidedown',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showEmailSlidedown(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    showSmsAndEmailSlidedown(options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'showSmsAndEmailSlidedown',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.showSmsAndEmailSlidedown(options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getNotificationPermission(onComplete) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getNotificationPermission',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getNotificationPermission(onComplete)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getUserId(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getUserId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getUserId(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getSubscription(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getSubscription',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getSubscription(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setEmail(email, options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setEmail',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setEmail(email, options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setSMSNumber(smsNumber, options) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setSMSNumber',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setSMSNumber(smsNumber, options)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    logoutEmail() {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'logoutEmail',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.logoutEmail()
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    logoutSMS() {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'logoutSMS',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.logoutSMS()
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    setExternalUserId(externalUserId, authHash) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'setExternalUserId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.setExternalUserId(externalUserId, authHash)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    removeExternalUserId() {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'removeExternalUserId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.removeExternalUserId()
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getExternalUserId() {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getExternalUserId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getExternalUserId()
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    provideUserConsent(consent) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'provideUserConsent',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.provideUserConsent(consent)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getEmailId(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getEmailId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getEmailId(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    getSMSId(callback) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'getSMSId',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.getSMSId(callback)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
-            });
-        });
-    }
-    sendOutcome(outcomeName, outcomeWeight) {
-        return new Promise((resolve, reject) => {
-            if (!this.doesOneSignalExist()) {
-                this.ngOneSignalFunctionQueue.push({
-                    name: 'sendOutcome',
-                    args: arguments,
-                    promiseResolver: resolve,
-                });
-                return;
-            }
-            window.OneSignal.push(() => {
-                window.OneSignal.sendOutcome(outcomeName, outcomeWeight)
-                    .then((value) => resolve(value))
-                    .catch((error) => reject(error));
             });
         });
     }
