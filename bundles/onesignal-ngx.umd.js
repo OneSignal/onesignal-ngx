@@ -410,7 +410,7 @@
     // to disambiguate between a CDN load failure and a delayed call to
     // OneSignal#init.
     var isOneSignalScriptFailed = false;
-    if (window) {
+    if (typeof window !== 'undefined') {
         window.OneSignalDeferred = window.OneSignalDeferred || [];
         addSDKScript();
     }
