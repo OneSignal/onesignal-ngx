@@ -28,12 +28,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.login(externalId, jwtToken)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.login(externalId, jwtToken).then(function () { return resolve(); });
             });
         });
     }
@@ -41,12 +40,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.logout()
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.logout().then(function () { return resolve(); });
             });
         });
     }
@@ -54,12 +52,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.setConsentGiven(consent)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.setConsentGiven(consent).then(function () { return resolve(); });
             });
         });
     }
@@ -67,12 +64,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.setConsentRequired(requiresConsent)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.setConsentRequired(requiresConsent).then(function () { return resolve(); });
             });
         });
     }
@@ -80,12 +76,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptPush(options)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Slidedown.promptPush(options).then(function () { return resolve(); });
             });
         });
     }
@@ -93,12 +88,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptPushCategories(options)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Slidedown.promptPushCategories(options).then(function () { return resolve(); });
             });
         });
     }
@@ -106,12 +100,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptSms(options)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Slidedown.promptSms(options).then(function () { return resolve(); });
             });
         });
     }
@@ -119,12 +112,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptEmail(options)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Slidedown.promptEmail(options).then(function () { return resolve(); });
             });
         });
     }
@@ -132,12 +124,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptSmsAndEmail(options)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Slidedown.promptSmsAndEmail(options).then(function () { return resolve(); });
             });
         });
     }
@@ -157,12 +148,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.setDefaultUrl(url)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Notifications.setDefaultUrl(url).then(function () { return resolve(); });
             });
         });
     }
@@ -170,12 +160,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.setDefaultTitle(title)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Notifications.setDefaultTitle(title).then(function () { return resolve(); });
             });
         });
     }
@@ -183,12 +172,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.requestPermission()
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Notifications.requestPermission().then(function () { return resolve(); });
             });
         });
     }
@@ -208,12 +196,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Session.sendOutcome(outcomeName, outcomeWeight)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Session.sendOutcome(outcomeName, outcomeWeight).then(function () { return resolve(); });
             });
         });
     }
@@ -221,12 +208,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Session.sendUniqueOutcome(outcomeName)
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.Session.sendUniqueOutcome(outcomeName).then(function () { return resolve(); });
             });
         });
     }
@@ -302,16 +288,51 @@
             oneSignal.User.removeTags(keys);
         });
     }
+    function userGetTags() {
+        var _a;
+        var retVal;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            retVal = oneSignal.User.getTags();
+        });
+        // @ts-ignore
+        return retVal;
+    }
+    function userAddEventListener(event, listener) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.addEventListener(event, listener);
+        });
+    }
+    function userRemoveEventListener(event, listener) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.removeEventListener(event, listener);
+        });
+    }
+    function userSetLanguage(language) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.setLanguage(language);
+        });
+    }
+    function userGetLanguage() {
+        var _a;
+        var retVal;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            retVal = oneSignal.User.getLanguage();
+        });
+        // @ts-ignore
+        return retVal;
+    }
     function pushSubscriptionOptIn() {
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.User.PushSubscription.optIn()
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.User.PushSubscription.optIn().then(function () { return resolve(); });
             });
         });
     }
@@ -319,12 +340,11 @@
         return new Promise(function (resolve, reject) {
             var _a;
             if (isOneSignalScriptFailed) {
-                reject();
+                reject(new Error('OneSignal script failed to load.'));
+                return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.User.PushSubscription.optOut()
-                    .then(function (value) { return resolve(value); })
-                    .catch(function (error) { return reject(error); });
+                oneSignal.User.PushSubscription.optOut().then(function () { return resolve(); });
             });
         });
     }
@@ -356,6 +376,8 @@
         removeEventListener: pushSubscriptionRemoveEventListener,
     };
     var UserNamespace = {
+        get onesignalId() { var _a, _b; return (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.onesignalId; },
+        get externalId() { var _a, _b; return (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.externalId; },
         addAlias: userAddAlias,
         addAliases: userAddAliases,
         removeAlias: userRemoveAlias,
@@ -368,6 +390,11 @@
         addTags: userAddTags,
         removeTag: userRemoveTag,
         removeTags: userRemoveTags,
+        getTags: userGetTags,
+        addEventListener: userAddEventListener,
+        removeEventListener: userRemoveEventListener,
+        setLanguage: userSetLanguage,
+        getLanguage: userGetLanguage,
         PushSubscription: PushSubscriptionNamespace,
     };
     var SessionNamespace = {
