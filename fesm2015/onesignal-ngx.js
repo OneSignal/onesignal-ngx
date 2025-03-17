@@ -5,12 +5,11 @@ function oneSignalLogin(externalId, jwtToken) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.login(externalId, jwtToken)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.login(externalId, jwtToken).then(() => resolve());
         });
     });
 }
@@ -18,12 +17,11 @@ function oneSignalLogout() {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.logout()
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.logout().then(() => resolve());
         });
     });
 }
@@ -31,12 +29,11 @@ function oneSignalSetConsentGiven(consent) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.setConsentGiven(consent)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.setConsentGiven(consent).then(() => resolve());
         });
     });
 }
@@ -44,12 +41,11 @@ function oneSignalSetConsentRequired(requiresConsent) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.setConsentRequired(requiresConsent)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.setConsentRequired(requiresConsent).then(() => resolve());
         });
     });
 }
@@ -57,12 +53,11 @@ function slidedownPromptPush(options) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptPush(options)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Slidedown.promptPush(options).then(() => resolve());
         });
     });
 }
@@ -70,12 +65,11 @@ function slidedownPromptPushCategories(options) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptPushCategories(options)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Slidedown.promptPushCategories(options).then(() => resolve());
         });
     });
 }
@@ -83,12 +77,11 @@ function slidedownPromptSms(options) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptSms(options)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Slidedown.promptSms(options).then(() => resolve());
         });
     });
 }
@@ -96,12 +89,11 @@ function slidedownPromptEmail(options) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptEmail(options)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Slidedown.promptEmail(options).then(() => resolve());
         });
     });
 }
@@ -109,12 +101,11 @@ function slidedownPromptSmsAndEmail(options) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptSmsAndEmail(options)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Slidedown.promptSmsAndEmail(options).then(() => resolve());
         });
     });
 }
@@ -134,12 +125,11 @@ function notificationsSetDefaultUrl(url) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.setDefaultUrl(url)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Notifications.setDefaultUrl(url).then(() => resolve());
         });
     });
 }
@@ -147,12 +137,11 @@ function notificationsSetDefaultTitle(title) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.setDefaultTitle(title)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Notifications.setDefaultTitle(title).then(() => resolve());
         });
     });
 }
@@ -160,12 +149,11 @@ function notificationsRequestPermission() {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.requestPermission()
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Notifications.requestPermission().then(() => resolve());
         });
     });
 }
@@ -185,12 +173,11 @@ function sessionSendOutcome(outcomeName, outcomeWeight) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Session.sendOutcome(outcomeName, outcomeWeight)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Session.sendOutcome(outcomeName, outcomeWeight).then(() => resolve());
         });
     });
 }
@@ -198,12 +185,11 @@ function sessionSendUniqueOutcome(outcomeName) {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Session.sendUniqueOutcome(outcomeName)
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.Session.sendUniqueOutcome(outcomeName).then(() => resolve());
         });
     });
 }
@@ -279,16 +265,51 @@ function userRemoveTags(keys) {
         oneSignal.User.removeTags(keys);
     });
 }
+function userGetTags() {
+    var _a;
+    let retVal;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        retVal = oneSignal.User.getTags();
+    });
+    // @ts-ignore
+    return retVal;
+}
+function userAddEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.addEventListener(event, listener);
+    });
+}
+function userRemoveEventListener(event, listener) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.removeEventListener(event, listener);
+    });
+}
+function userSetLanguage(language) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.setLanguage(language);
+    });
+}
+function userGetLanguage() {
+    var _a;
+    let retVal;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        retVal = oneSignal.User.getLanguage();
+    });
+    // @ts-ignore
+    return retVal;
+}
 function pushSubscriptionOptIn() {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.User.PushSubscription.optIn()
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.User.PushSubscription.optIn().then(() => resolve());
         });
     });
 }
@@ -296,12 +317,11 @@ function pushSubscriptionOptOut() {
     return new Promise((resolve, reject) => {
         var _a;
         if (isOneSignalScriptFailed) {
-            reject();
+            reject(new Error('OneSignal script failed to load.'));
+            return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.User.PushSubscription.optOut()
-                .then((value) => resolve(value))
-                .catch((error) => reject(error));
+            oneSignal.User.PushSubscription.optOut().then(() => resolve());
         });
     });
 }
@@ -333,6 +353,8 @@ const PushSubscriptionNamespace = {
     removeEventListener: pushSubscriptionRemoveEventListener,
 };
 const UserNamespace = {
+    get onesignalId() { var _a, _b; return (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.onesignalId; },
+    get externalId() { var _a, _b; return (_b = (_a = window.OneSignal) === null || _a === void 0 ? void 0 : _a.User) === null || _b === void 0 ? void 0 : _b.externalId; },
     addAlias: userAddAlias,
     addAliases: userAddAliases,
     removeAlias: userRemoveAlias,
@@ -345,6 +367,11 @@ const UserNamespace = {
     addTags: userAddTags,
     removeTag: userRemoveTag,
     removeTags: userRemoveTags,
+    getTags: userGetTags,
+    addEventListener: userAddEventListener,
+    removeEventListener: userRemoveEventListener,
+    setLanguage: userSetLanguage,
+    getLanguage: userGetLanguage,
     PushSubscription: PushSubscriptionNamespace,
 };
 const SessionNamespace = {

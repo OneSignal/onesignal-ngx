@@ -69,7 +69,7 @@ interface IOSNotification {
      * If this value is the same as existing notification, it will replace it
      * Can be set when creating the notification with "Web Push Topic" on the dashboard
      * or web_push_topic from the REST API.
-    */
+     */
     readonly topic?: string;
     /**
      * Custom object that was sent with the notification;
@@ -127,6 +127,13 @@ interface NotificationClickEvent {
     readonly notification: IOSNotification;
     readonly result: NotificationClickResult;
 }
+declare type UserChangeEvent = {
+    current: UserNamespaceProperties;
+};
+declare type UserNamespaceProperties = {
+    onesignalId: string | undefined;
+    externalId: string | undefined;
+};
 interface IInitObject {
     appId: string;
     subdomainName?: string;
@@ -140,12 +147,13 @@ interface IInitObject {
     autoRegister?: boolean;
     notificationClickHandlerMatch?: string;
     notificationClickHandlerAction?: string;
+    path?: string;
     serviceWorkerParam?: {
         scope: string;
     };
     serviceWorkerPath?: string;
+    serviceWorkerOverrideForTypical?: boolean;
     serviceWorkerUpdaterPath?: string;
-    path?: string;
     allowLocalhostAsSecureOrigin?: boolean;
     [key: string]: any;
 }
@@ -188,6 +196,8 @@ interface IOneSignalSession {
     sendUniqueOutcome(outcomeName: string): Promise<void>;
 }
 interface IOneSignalUser {
+    onesignalId: string | undefined;
+    externalId: string | undefined;
     PushSubscription: IOneSignalPushSubscription;
     addAlias(label: string, id: string): void;
     addAliases(aliases: {
@@ -205,6 +215,13 @@ interface IOneSignalUser {
     }): void;
     removeTag(key: string): void;
     removeTags(keys: string[]): void;
+    getTags(): {
+        [key: string]: string;
+    };
+    addEventListener(event: 'change', listener: (change: UserChangeEvent) => void): void;
+    removeEventListener(event: 'change', listener: (change: UserChangeEvent) => void): void;
+    setLanguage(language: string): void;
+    getLanguage(): string;
 }
 interface IOneSignalPushSubscription {
     id: string | null | undefined;
