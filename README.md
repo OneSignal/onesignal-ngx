@@ -1,4 +1,4 @@
-<h1 align="center">welcome to onesignal-ngx 👋</h1>
+<h1 align="center">Welcome to onesignal-ngx 👋</h1>
 
 <p>
   <a href="https://www.npmjs.com/package/onesignal-ngx" target="_blank">
