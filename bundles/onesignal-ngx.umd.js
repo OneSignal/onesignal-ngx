@@ -452,18 +452,18 @@
     }
     function isMacOSSafariInIframe() {
         // Fallback detection for Safari on macOS in an iframe context
-        return window.top !== window && // isContextIframe
+        return (window.top !== window && // isContextIframe
             navigator.vendor === 'Apple Computer, Inc.' && // isSafari
-            navigator.platform === 'MacIntel'; // isMacOS
+            navigator.platform === 'MacIntel'); // isMacOS
     }
     function supportsSafariPush() {
-        return (window.safari && typeof window.safari.pushNotification !== 'undefined') ||
-            isMacOSSafariInIframe();
+        return ((window.safari && typeof window.safari.pushNotification !== 'undefined') ||
+            isMacOSSafariInIframe());
     }
     // Does the browser support the standard Push API
     function supportsVapidPush() {
-        return typeof PushSubscriptionOptions !== 'undefined' &&
-            PushSubscriptionOptions.prototype.hasOwnProperty('applicationServerKey');
+        return (typeof PushSubscriptionOptions !== 'undefined' &&
+            PushSubscriptionOptions.prototype.hasOwnProperty('applicationServerKey'));
     }
     /* E N D */
     function handleOnError() {
@@ -502,18 +502,21 @@
                 return Promise.reject("OneSignal is already initialized.");
             }
             if (!options || !options.appId) {
-                throw new Error('You need to provide your OneSignal appId.');
+                return Promise.reject('You need to provide your OneSignal appId.');
             }
             if (!document) {
                 return Promise.reject("Document is not defined.");
             }
-            return new Promise(function (resolve) {
+            return new Promise(function (resolve, reject) {
                 var _a;
                 (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                    oneSignal.init(options).then(function () {
+                    oneSignal
+                        .init(options)
+                        .then(function () {
                         isOneSignalInitialized = true;
                         resolve();
-                    });
+                    })
+                        .catch(reject);
                 });
             });
         };
@@ -522,7 +525,7 @@
     OneSignal.ɵprov = i0__namespace.ɵɵdefineInjectable({ factory: function OneSignal_Factory() { return new OneSignal(); }, token: OneSignal, providedIn: "root" });
     OneSignal.decorators = [
         { type: i0.Injectable, args: [{
-                    providedIn: 'root'
+                    providedIn: 'root',
                 },] }
     ];
     OneSignal.ctorParameters = function () { return []; };
