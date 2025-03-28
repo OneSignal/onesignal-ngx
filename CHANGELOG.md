@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.1](https://github.com/OneSignal/onesignal-ngx/compare/2.2.0...2.2.1) (2025-03-28)
+
+### Bug Fixes
+
+* add promise reject for init call ([10d539f](https://github.com/OneSignal/onesignal-ngx/commit/10d539f0742ed45e6dea01fa728421c61c1bf6c8))
+
 ## [2.2.0](https://github.com/OneSignal/onesignal-ngx/compare/2.1.0...2.2.0) (2025-03-24)
 
 ### Features
