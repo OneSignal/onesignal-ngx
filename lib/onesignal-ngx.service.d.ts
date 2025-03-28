@@ -32,7 +32,7 @@ export declare type SubscriptionChangeEvent = {
     current: PushSubscriptionNamespaceProperties;
 };
 export declare type NotificationEventName = 'click' | 'foregroundWillDisplay' | 'dismiss' | 'permissionChange' | 'permissionPromptDisplay';
-export declare type SlidedownEventName = 'slidedownShown';
+export declare type SlidedownEventName = 'slidedownAllowClick' | 'slidedownCancelClick' | 'slidedownClosed' | 'slidedownQueued' | 'slidedownShown';
 export declare type OneSignalDeferredLoadedCallback = (onesignal: IOneSignalOneSignal) => void;
 export interface IOSNotification {
     /**
