@@ -20,7 +20,7 @@
 - 🏠 [Homepage](https://onesignal.com)
 - 🖤 [npm](https://www.npmjs.com/package/onesignal-ngx)
 
-OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 2 million+ businesses to send 9 billion Push Notifications per day.
+OneSignal is the world's leader for Mobile Push Notifications, Web Push, and In-App Messaging. It is trusted by 2 million+ developers to send 12 billion Push Notifications per day.
 
 You can find more information on OneSignal [here](https://onesignal.com/).
 
@@ -96,7 +96,7 @@ this.oneSignal
 
 ### Init Options
 
-You can pass other options to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more ([full list of initialization options](https://documentation.onesignal.com/v11.0/docs/web-sdk#init)).
+You can pass other [options](https://documentation.onesignal.com/docs/web-sdk-reference#init) to the `init` function. Use these options to configure personalized prompt options, auto-resubscribe, and more.
 
 <details>
   <summary>Expand to see more options</summary>
@@ -182,7 +182,7 @@ class OneSignal {
 
 ### OneSignal API
 
-See the official [OneSignal WebSDK reference](https://documentation.onesignal.com/v11.0/docs/web-sdk) for information on all available SDK functions.
+See the official [OneSignal WebSDK reference](https://documentation.onesignal.com/docs/web-sdk-reference) for information on all available SDK functions.
 
 ---
 
@@ -222,7 +222,7 @@ this.oneSignal.Notifications.addEventListener('click', (event) => {
 });
 ```
 
-See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/v11.0/docs/web-sdk) for more info on the available event listeners.
+See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-sdk-reference#addeventlistener-push-notification) for more info on the available event listeners.
 
 ## Troubleshooting
 
