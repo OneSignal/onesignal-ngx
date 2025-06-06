@@ -1,3 +1,4 @@
+import { __awaiter } from 'tslib';
 import * as i0 from '@angular/core';
 import { Injectable, Component, NgModule } from '@angular/core';
 
@@ -265,14 +266,17 @@ function userRemoveTags(keys) {
         oneSignal.User.removeTags(keys);
     });
 }
+// @ts-expect-error - return non-Promise type despite needing to await OneSignalDeferred
 function userGetTags() {
     var _a;
-    let retVal;
-    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-        retVal = oneSignal.User.getTags();
+    return __awaiter(this, void 0, void 0, function* () {
+        let retVal;
+        yield ((_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            retVal = oneSignal.User.getTags();
+        }));
+        // @ts-ignore
+        return retVal;
     });
-    // @ts-ignore
-    return retVal;
 }
 function userAddEventListener(event, listener) {
     var _a;
@@ -292,14 +296,17 @@ function userSetLanguage(language) {
         oneSignal.User.setLanguage(language);
     });
 }
+// @ts-expect-error - return non-Promise type despite needing to await OneSignalDeferred
 function userGetLanguage() {
     var _a;
-    let retVal;
-    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-        retVal = oneSignal.User.getLanguage();
+    return __awaiter(this, void 0, void 0, function* () {
+        let retVal;
+        yield ((_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            retVal = oneSignal.User.getLanguage();
+        }));
+        // @ts-ignore
+        return retVal;
     });
-    // @ts-ignore
-    return retVal;
 }
 function pushSubscriptionOptIn() {
     return new Promise((resolve, reject) => {
@@ -475,6 +482,7 @@ class OneSignal {
      * @PublicApi
      */
     init(options) {
+        var _a;
         if (isOneSignalInitialized) {
             return Promise.reject(`OneSignal is already initialized.`);
         }
@@ -483,6 +491,10 @@ class OneSignal {
         }
         if (!document) {
             return Promise.reject(`Document is not defined.`);
+        }
+        // Handle both disabled and disable keys for welcome notification
+        if (((_a = options.welcomeNotification) === null || _a === void 0 ? void 0 : _a.disabled) !== undefined) {
+            options.welcomeNotification.disable = options.welcomeNotification.disabled;
         }
         return new Promise((resolve, reject) => {
             var _a;
