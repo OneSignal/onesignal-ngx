@@ -206,8 +206,13 @@ export interface IInitObject {
     welcomeNotification?: {
         /**
          * Disables sending a welcome notification to new site visitors. If you want to disable welcome notifications, this is the only option you need.
+         * @deprecated Use 'disable' instead. This will be removed in a future version.
          */
         disabled?: boolean;
+        /**
+         * Disables sending a welcome notification to new site visitors. If you want to disable welcome notifications, this is the only option you need.
+         */
+        disable?: boolean;
         /**
          * The welcome notification's message. You can localize this to your own language.
          * If left blank or set to blank, the default of 'Thanks for subscribing!' will be used.
@@ -222,7 +227,7 @@ export interface IInitObject {
          * By default, clicking the welcome notification does not open any link.
          * This is recommended because the user has just visited your site and subscribed.
          */
-        url: string;
+        url?: string;
     };
     /**
      * Will enable customization of the notify/subscription bell button.
@@ -346,7 +351,7 @@ export interface IOneSignalSlidedown {
     removeEventListener(event: SlidedownEventName, listener: (wasShown: boolean) => void): void;
 }
 export interface IOneSignalDebug {
-    setLogLevel(logLevel: string): void;
+    setLogLevel(logLevel: 'trace' | 'debug' | 'info' | 'warn' | 'error'): void;
 }
 export interface IOneSignalSession {
     sendOutcome(outcomeName: string, outcomeWeight?: number): Promise<void>;
