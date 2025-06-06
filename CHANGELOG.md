@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.2](https://github.com/OneSignal/onesignal-ngx/compare/2.2.1...2.2.2) (2025-06-06)
+
+### Bug Fixes
+
+* sync with web-shim-codegen v3.0.5 ([4379cb3](https://github.com/OneSignal/onesignal-ngx/commit/4379cb3926a7371fdfa211a7cfc9b20ced841103))
+
 ## [2.2.1](https://github.com/OneSignal/onesignal-ngx/compare/2.2.0...2.2.1) (2025-03-28)
 
 ### Bug Fixes
