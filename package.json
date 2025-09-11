@@ -1,6 +1,6 @@
 {
   "name": "onesignal-ngx",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "This is a JavaScript module that can be used to easily include OneSignal code in a website or app that uses Angular for its front-end codebase.",
   "contributors": [
     {
