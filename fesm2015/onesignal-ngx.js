@@ -10,7 +10,9 @@ function oneSignalLogin(externalId, jwtToken) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.login(externalId, jwtToken).then(() => resolve());
+            oneSignal.login(externalId, jwtToken)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -22,7 +24,9 @@ function oneSignalLogout() {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.logout().then(() => resolve());
+            oneSignal.logout()
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -34,7 +38,9 @@ function oneSignalSetConsentGiven(consent) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.setConsentGiven(consent).then(() => resolve());
+            oneSignal.setConsentGiven(consent)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -46,7 +52,9 @@ function oneSignalSetConsentRequired(requiresConsent) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.setConsentRequired(requiresConsent).then(() => resolve());
+            oneSignal.setConsentRequired(requiresConsent)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -58,7 +66,9 @@ function slidedownPromptPush(options) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptPush(options).then(() => resolve());
+            oneSignal.Slidedown.promptPush(options)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -70,7 +80,9 @@ function slidedownPromptPushCategories(options) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptPushCategories(options).then(() => resolve());
+            oneSignal.Slidedown.promptPushCategories(options)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -82,7 +94,9 @@ function slidedownPromptSms(options) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptSms(options).then(() => resolve());
+            oneSignal.Slidedown.promptSms(options)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -94,7 +108,9 @@ function slidedownPromptEmail(options) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptEmail(options).then(() => resolve());
+            oneSignal.Slidedown.promptEmail(options)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -106,7 +122,9 @@ function slidedownPromptSmsAndEmail(options) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Slidedown.promptSmsAndEmail(options).then(() => resolve());
+            oneSignal.Slidedown.promptSmsAndEmail(options)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -130,7 +148,9 @@ function notificationsSetDefaultUrl(url) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.setDefaultUrl(url).then(() => resolve());
+            oneSignal.Notifications.setDefaultUrl(url)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -142,7 +162,9 @@ function notificationsSetDefaultTitle(title) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.setDefaultTitle(title).then(() => resolve());
+            oneSignal.Notifications.setDefaultTitle(title)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -154,7 +176,9 @@ function notificationsRequestPermission() {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Notifications.requestPermission().then(() => resolve());
+            oneSignal.Notifications.requestPermission()
+                .then(result => resolve(result))
+                .catch(error => reject(error));
         });
     });
 }
@@ -178,7 +202,9 @@ function sessionSendOutcome(outcomeName, outcomeWeight) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Session.sendOutcome(outcomeName, outcomeWeight).then(() => resolve());
+            oneSignal.Session.sendOutcome(outcomeName, outcomeWeight)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -190,7 +216,9 @@ function sessionSendUniqueOutcome(outcomeName) {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.Session.sendUniqueOutcome(outcomeName).then(() => resolve());
+            oneSignal.Session.sendUniqueOutcome(outcomeName)
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -308,6 +336,12 @@ function userGetLanguage() {
         return retVal;
     });
 }
+function userTrackEvent(name, properties) {
+    var _a;
+    (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+        oneSignal.User.trackEvent(name, properties);
+    });
+}
 function pushSubscriptionOptIn() {
     return new Promise((resolve, reject) => {
         var _a;
@@ -316,7 +350,9 @@ function pushSubscriptionOptIn() {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.User.PushSubscription.optIn().then(() => resolve());
+            oneSignal.User.PushSubscription.optIn()
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -328,7 +364,9 @@ function pushSubscriptionOptOut() {
             return;
         }
         (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
-            oneSignal.User.PushSubscription.optOut().then(() => resolve());
+            oneSignal.User.PushSubscription.optOut()
+                .then(() => resolve())
+                .catch(error => reject(error));
         });
     });
 }
@@ -379,6 +417,7 @@ const UserNamespace = {
     removeEventListener: userRemoveEventListener,
     setLanguage: userSetLanguage,
     getLanguage: userGetLanguage,
+    trackEvent: userTrackEvent,
     PushSubscription: PushSubscriptionNamespace,
 };
 const SessionNamespace = {
