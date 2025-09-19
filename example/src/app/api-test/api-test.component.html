@@ -1,0 +1,274 @@
+<div class="api-test-container">
+  <div class="header">
+    <h2>OneSignal API Testing Dashboard</h2>
+    <div class="user-info">
+      <h3>Current User Info</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>OneSignal ID:</strong>
+          {{ userInfo.onesignalId || "Not available" }}
+        </div>
+        <div class="info-item">
+          <strong>External ID:</strong> {{ userInfo.externalId || "Not set" }}
+        </div>
+        <div class="info-item">
+          <strong>Language:</strong> {{ userInfo.language || "Not set" }}
+        </div>
+        <div class="info-item">
+          <strong>Tags Count:</strong> {{ Object.keys(tags).length }}
+        </div>
+      </div>
+      <button (click)="refreshUserInfo()" class="secondary">
+        Refresh User Info
+      </button>
+    </div>
+  </div>
+
+  <div class="test-sections">
+    <!-- User Tags Section -->
+    <div class="card">
+      <h3>🏷️ User Tags</h3>
+      <div class="form-group">
+        <label>Single Tag:</label>
+        <div class="input-group">
+          <input [(ngModel)]="tagKey" placeholder="Tag key" class="tag-key" />
+          <input
+            [(ngModel)]="tagValue"
+            placeholder="Tag value"
+            class="tag-value"
+          />
+          <button (click)="addTag()" [disabled]="!tagKey || !tagValue">
+            Add Tag
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Multiple Tags (JSON):</label>
+        <textarea
+          [(ngModel)]="tagsObject"
+          placeholder='{"key1": "value1", "key2": "value2"}'
+          rows="3"
+        ></textarea>
+        <button (click)="addTags()" [disabled]="!tagsObject">Add Tags</button>
+      </div>
+
+      <div class="form-group">
+        <label>Remove Tag(s):</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="tagKey"
+            placeholder="Tag key or comma-separated keys"
+          />
+          <button (click)="removeTag()" class="danger">Remove Tag</button>
+          <button (click)="removeTags()" class="danger">Remove Tags</button>
+        </div>
+      </div>
+
+      <div class="current-tags" *ngIf="Object.keys(tags).length > 0">
+        <h4>Current Tags:</h4>
+        <div class="tag-list">
+          <span class="tag" *ngFor="let tag of tags | keyvalue">
+            {{ tag.key }}: {{ tag.value }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Aliases Section -->
+    <div class="card">
+      <h3>👤 User Aliases</h3>
+      <div class="form-group">
+        <label>Single Alias:</label>
+        <div class="input-group">
+          <input [(ngModel)]="aliasLabel" placeholder="Alias label" />
+          <input [(ngModel)]="aliasId" placeholder="Alias ID" />
+          <button (click)="addAlias()" [disabled]="!aliasLabel || !aliasId">
+            Add Alias
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Multiple Aliases (JSON):</label>
+        <textarea
+          [(ngModel)]="aliasesObject"
+          placeholder='{"label1": "id1", "label2": "id2"}'
+          rows="3"
+        ></textarea>
+        <button (click)="addAliases()" [disabled]="!aliasesObject">
+          Add Aliases
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label>Remove Alias(es):</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="aliasLabel"
+            placeholder="Alias label or comma-separated labels"
+          />
+          <button (click)="removeAlias()" class="danger">Remove Alias</button>
+          <button (click)="removeAliases()" class="danger">
+            Remove Aliases
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email & SMS Section -->
+    <div class="card">
+      <h3>📧 Email & SMS</h3>
+      <div class="form-group">
+        <label>Email:</label>
+        <div class="input-group">
+          <input
+            [(ngModel)]="email"
+            placeholder="user@example.com"
+            type="email"
+          />
+          <button (click)="addEmail()" [disabled]="!email">Add Email</button>
+          <button (click)="removeEmail()" [disabled]="!email" class="danger">
+            Remove Email
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>SMS Number:</label>
+        <div class="input-group">
+          <input [(ngModel)]="smsNumber" placeholder="+1234567890" type="tel" />
+          <button (click)="addSms()" [disabled]="!smsNumber">Add SMS</button>
+          <button (click)="removeSms()" [disabled]="!smsNumber" class="danger">
+            Remove SMS
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentication Section -->
+    <div class="card">
+      <h3>🔐 Authentication</h3>
+      <div class="form-group">
+        <label>External ID:</label>
+        <input [(ngModel)]="externalId" placeholder="user123" />
+      </div>
+      <div class="form-group">
+        <label>JWT Token (optional):</label>
+        <input
+          [(ngModel)]="jwtToken"
+          placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        />
+      </div>
+      <div class="button-group">
+        <button (click)="login()" [disabled]="!externalId" class="success">
+          Login
+        </button>
+        <button (click)="logout()" class="warning">Logout</button>
+      </div>
+    </div>
+
+    <!-- Language & Events Section -->
+    <div class="card">
+      <h3>🌐 Language & Events</h3>
+      <div class="form-group">
+        <label>Language:</label>
+        <div class="input-group">
+          <input [(ngModel)]="language" placeholder="en, es, fr, etc." />
+          <button (click)="setLanguage()" [disabled]="!language">
+            Set Language
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Event Name:</label>
+        <input [(ngModel)]="eventName" placeholder="purchase, signup, etc." />
+      </div>
+      <div class="form-group">
+        <label>Event Properties (JSON, optional):</label>
+        <textarea
+          [(ngModel)]="eventProperties"
+          placeholder='{"property1": "value1", "property2": 123}'
+          rows="3"
+        ></textarea>
+      </div>
+      <button (click)="trackEvent()" [disabled]="!eventName" class="success">
+        Track Event
+      </button>
+    </div>
+
+    <!-- Session & Outcomes Section -->
+    <div class="card">
+      <h3>📊 Session & Outcomes</h3>
+      <div class="form-group">
+        <label>Outcome Name:</label>
+        <div class="input-group">
+          <input [(ngModel)]="outcomeName" placeholder="purchase_completed" />
+          <button
+            (click)="sendUniqueOutcome()"
+            [disabled]="!outcomeName"
+            class="success"
+          >
+            Send Unique Outcome
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consent & Permissions Section -->
+    <div class="card">
+      <h3>✅ Consent & Permissions</h3>
+      <div class="button-group">
+        <button (click)="setConsentGiven()" class="success">
+          Set Consent Given
+        </button>
+        <button (click)="setConsentRequired()" class="warning">
+          Set Consent Required
+        </button>
+        <button (click)="requestPermission()" class="success">
+          Request Permission
+        </button>
+        <button (click)="showSlidedownPrompt()" class="secondary">
+          Show Slidedown Prompt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Test Results Section -->
+  <div class="card results-section">
+    <div class="results-header">
+      <h3>📋 Test Results</h3>
+      <button (click)="clearResults()" class="danger">Clear Results</button>
+    </div>
+
+    <div class="results-list" *ngIf="testResults.length > 0; else noResults">
+      <div
+        class="result-item"
+        *ngFor="let result of testResults"
+        [class.success]="result.success"
+        [class.error]="!result.success"
+      >
+        <div class="result-header">
+          <span class="method">{{ result.method }}</span>
+          <span class="timestamp">{{ result.timestamp | date : "short" }}</span>
+          <span
+            class="status"
+            [class.success]="result.success"
+            [class.error]="!result.success"
+          >
+            {{ result.success ? "✅" : "❌" }}
+          </span>
+        </div>
+        <div class="result-message">{{ result.message }}</div>
+      </div>
+    </div>
+
+    <ng-template #noResults>
+      <div class="no-results">
+        <p>No test results yet. Try some API methods above!</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

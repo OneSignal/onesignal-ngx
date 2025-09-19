@@ -1,0 +1,24 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>{{ title }}</h1>
+    <div class="status-indicator" [class.initialized]="oneSignalInitialized" [class.error]="oneSignalError">
+      <span *ngIf="oneSignalInitialized">✅ OneSignal Initialized</span>
+      <span *ngIf="oneSignalError">❌ {{ oneSignalError }}</span>
+      <span *ngIf="!oneSignalInitialized && !oneSignalError">⏳ Initializing...</span>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="warning-box" *ngIf="!oneSignalInitialized">
+      <h3>⚠️ Setup Required</h3>
+      <p>To test the OneSignal API methods, you need to:</p>
+      <ol>
+        <li>Replace 'YOUR_ONESIGNAL_APP_ID' in app.component.ts with your actual OneSignal App ID</li>
+        <li>Make sure the OneSignalSDKWorker.js file is accessible at your domain root</li>
+        <li>Ensure your domain is configured in OneSignal dashboard</li>
+      </ol>
+    </div>
+
+    <app-api-test *ngIf="oneSignalInitialized"></app-api-test>
+  </main>
+</div>
