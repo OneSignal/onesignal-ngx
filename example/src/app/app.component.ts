@@ -1,11 +1,12 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { OneSignal } from "onesignal-ngx";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
 })
@@ -14,6 +15,10 @@ export class AppComponent implements OnInit {
   oneSignalInitialized = false;
   oneSignalError: string | null = null;
   userInfo: any = {};
+
+  // Event tracking form data
+  eventName = "";
+  eventProperties = '{"source": "example", "value": 123}';
 
   // Getter for template access to Object.keys
   get tagCount() {
@@ -79,8 +84,23 @@ export class AppComponent implements OnInit {
 
   trackEvent() {
     try {
-      this.oneSignal.User.trackEvent("button_click", { source: "example" });
-      console.log("Event tracked");
+      if (!this.eventName.trim()) {
+        console.warn("Please enter an event name");
+        return;
+      }
+
+      let properties = undefined;
+      if (this.eventProperties.trim()) {
+        try {
+          properties = JSON.parse(this.eventProperties);
+        } catch (parseError) {
+          console.error("Invalid JSON in event properties:", parseError);
+          return;
+        }
+      }
+
+      this.oneSignal.User.trackEvent(this.eventName, properties);
+      console.log(`Event tracked: ${this.eventName}`, properties);
     } catch (error) {
       console.error("Track event error:", error);
     }
