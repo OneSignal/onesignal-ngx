@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/OneSignal/onesignal-ngx/compare/2.2.2...2.3.0) (2025-09-19)
+
+### Features
+
+* add new custom events `trackEvent` method ([d6a90b0](https://github.com/OneSignal/onesignal-ngx/commit/d6a90b026403440de905ce8a830624bec93ca329))
+
 ## [2.2.2](https://github.com/OneSignal/onesignal-ngx/compare/2.2.1...2.2.2) (2025-06-06)
 
 ### Bug Fixes
