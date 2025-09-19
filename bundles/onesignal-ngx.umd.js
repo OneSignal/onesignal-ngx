@@ -350,7 +350,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.login(externalId, jwtToken).then(function () { return resolve(); });
+                oneSignal.login(externalId, jwtToken)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -362,7 +364,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.logout().then(function () { return resolve(); });
+                oneSignal.logout()
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -374,7 +378,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.setConsentGiven(consent).then(function () { return resolve(); });
+                oneSignal.setConsentGiven(consent)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -386,7 +392,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.setConsentRequired(requiresConsent).then(function () { return resolve(); });
+                oneSignal.setConsentRequired(requiresConsent)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -398,7 +406,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptPush(options).then(function () { return resolve(); });
+                oneSignal.Slidedown.promptPush(options)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -410,7 +420,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptPushCategories(options).then(function () { return resolve(); });
+                oneSignal.Slidedown.promptPushCategories(options)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -422,7 +434,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptSms(options).then(function () { return resolve(); });
+                oneSignal.Slidedown.promptSms(options)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -434,7 +448,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptEmail(options).then(function () { return resolve(); });
+                oneSignal.Slidedown.promptEmail(options)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -446,7 +462,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Slidedown.promptSmsAndEmail(options).then(function () { return resolve(); });
+                oneSignal.Slidedown.promptSmsAndEmail(options)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -470,7 +488,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.setDefaultUrl(url).then(function () { return resolve(); });
+                oneSignal.Notifications.setDefaultUrl(url)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -482,7 +502,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.setDefaultTitle(title).then(function () { return resolve(); });
+                oneSignal.Notifications.setDefaultTitle(title)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -494,7 +516,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Notifications.requestPermission().then(function () { return resolve(); });
+                oneSignal.Notifications.requestPermission()
+                    .then(function (result) { return resolve(result); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -518,7 +542,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Session.sendOutcome(outcomeName, outcomeWeight).then(function () { return resolve(); });
+                oneSignal.Session.sendOutcome(outcomeName, outcomeWeight)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -530,7 +556,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.Session.sendUniqueOutcome(outcomeName).then(function () { return resolve(); });
+                oneSignal.Session.sendUniqueOutcome(outcomeName)
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -660,6 +688,12 @@
             });
         });
     }
+    function userTrackEvent(name, properties) {
+        var _a;
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
+            oneSignal.User.trackEvent(name, properties);
+        });
+    }
     function pushSubscriptionOptIn() {
         return new Promise(function (resolve, reject) {
             var _a;
@@ -668,7 +702,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.User.PushSubscription.optIn().then(function () { return resolve(); });
+                oneSignal.User.PushSubscription.optIn()
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -680,7 +716,9 @@
                 return;
             }
             (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
-                oneSignal.User.PushSubscription.optOut().then(function () { return resolve(); });
+                oneSignal.User.PushSubscription.optOut()
+                    .then(function () { return resolve(); })
+                    .catch(function (error) { return reject(error); });
             });
         });
     }
@@ -731,6 +769,7 @@
         removeEventListener: userRemoveEventListener,
         setLanguage: userSetLanguage,
         getLanguage: userGetLanguage,
+        trackEvent: userTrackEvent,
         PushSubscription: PushSubscriptionNamespace,
     };
     var SessionNamespace = {

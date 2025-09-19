@@ -337,7 +337,7 @@ export interface IOneSignalNotifications {
     setDefaultUrl(url: string): Promise<void>;
     setDefaultTitle(title: string): Promise<void>;
     isPushSupported(): boolean;
-    requestPermission(): Promise<void>;
+    requestPermission(): Promise<boolean>;
     addEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
     removeEventListener<K extends NotificationEventName>(event: K, listener: (obj: NotificationEventTypeMap[K]) => void): void;
 }
@@ -384,6 +384,7 @@ export interface IOneSignalUser {
     removeEventListener(event: 'change', listener: (change: UserChangeEvent) => void): void;
     setLanguage(language: string): void;
     getLanguage(): string;
+    trackEvent(name: string, properties?: Record<string, unknown>): void;
 }
 export interface IOneSignalPushSubscription {
     id: string | null | undefined;
