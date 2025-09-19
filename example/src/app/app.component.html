@@ -1,24 +1,105 @@
 <div class="app-container">
   <header class="app-header">
     <h1>{{ title }}</h1>
-    <div class="status-indicator" [class.initialized]="oneSignalInitialized" [class.error]="oneSignalError">
+    <div
+      class="status-indicator"
+      [class.initialized]="oneSignalInitialized"
+      [class.error]="oneSignalError"
+    >
       <span *ngIf="oneSignalInitialized">✅ OneSignal Initialized</span>
       <span *ngIf="oneSignalError">❌ {{ oneSignalError }}</span>
-      <span *ngIf="!oneSignalInitialized && !oneSignalError">⏳ Initializing...</span>
+      <span *ngIf="!oneSignalInitialized && !oneSignalError"
+        >⏳ Initializing...</span
+      >
     </div>
   </header>
 
   <main class="app-main">
     <div class="warning-box" *ngIf="!oneSignalInitialized">
       <h3>⚠️ Setup Required</h3>
-      <p>To test the OneSignal API methods, you need to:</p>
+      <p>To test the OneSignal SDK, you need to:</p>
       <ol>
-        <li>Replace 'YOUR_ONESIGNAL_APP_ID' in app.component.ts with your actual OneSignal App ID</li>
-        <li>Make sure the OneSignalSDKWorker.js file is accessible at your domain root</li>
+        <li>
+          Replace 'YOUR_ONESIGNAL_APP_ID' in app.component.ts with your actual
+          OneSignal App ID
+        </li>
+        <li>
+          Make sure the OneSignalSDKWorker.js file is accessible at your domain
+          root
+        </li>
         <li>Ensure your domain is configured in OneSignal dashboard</li>
       </ol>
     </div>
 
-    <app-api-test *ngIf="oneSignalInitialized"></app-api-test>
+    <div class="example-section" *ngIf="oneSignalInitialized">
+      <div class="card">
+        <h3>📊 Current User Info</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>OneSignal ID:</strong>
+            {{ userInfo.onesignalId || "Not available" }}
+          </div>
+          <div class="info-item">
+            <strong>External ID:</strong>
+            {{ userInfo.externalId || "Not set" }}
+          </div>
+          <div class="info-item">
+            <strong>Language:</strong>
+            {{ userInfo.language || "Not set" }}
+          </div>
+          <div class="info-item">
+            <strong>Tags Count:</strong>
+            {{ tagCount }}
+          </div>
+        </div>
+        <button (click)="loadUserInfo()" class="secondary">
+          Refresh User Info
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>🧪 Example API Methods</h3>
+        <p>Try these example OneSignal API methods:</p>
+        <div class="button-group">
+          <button (click)="login()" class="success">Login User</button>
+          <button (click)="addTag()" class="warning">Add Example Tag</button>
+          <button (click)="trackEvent()" class="secondary">Track Event</button>
+        </div>
+        <p class="note">
+          <strong>Note:</strong> Check the browser console to see the results of
+          these API calls.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📚 Available API Methods</h3>
+        <p>
+          The OneSignal Angular SDK provides access to all OneSignal Web SDK
+          methods:
+        </p>
+        <ul>
+          <li>
+            <strong>User Management:</strong> addTag, addTags, removeTag,
+            removeTags, addEmail, addSms, etc.
+          </li>
+          <li><strong>Authentication:</strong> login, logout</li>
+          <li><strong>Events:</strong> trackEvent, sendUniqueOutcome</li>
+          <li>
+            <strong>Notifications:</strong> requestPermission,
+            showSlidedownPrompt
+          </li>
+          <li><strong>Consent:</strong> setConsentGiven, setConsentRequired</li>
+        </ul>
+        <p>
+          See the
+          <a
+            href="https://documentation.onesignal.com/docs/web-sdk-reference"
+            target="_blank"
+            >OneSignal Web SDK Reference</a
+          >
+          for complete documentation.
+        </p>
+      </div>
+    </div>
   </main>
 </div>
