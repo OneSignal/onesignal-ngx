@@ -1,7 +1,5 @@
 {
-  "branches": [
-    "main"
-  ],
+  "branches": ["main"],
   "tagFormat": "${version}",
   "plugins": [
     [
@@ -56,7 +54,7 @@
       "@semantic-release/release-notes-generator",
       {
         "preset": "conventionalcommits",
-        "writerOpts": {
+        "presetConfig": {
           "types": [
             {
               "type": "feat",
@@ -69,6 +67,11 @@
             {
               "type": "docs",
               "section": "Documentation",
+              "hidden": false
+            },
+            {
+              "type": "build",
+              "section": "Build System",
               "hidden": false
             },
             {
