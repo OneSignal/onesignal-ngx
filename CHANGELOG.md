@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.1](https://github.com/OneSignal/onesignal-ngx/compare/2.3.0...2.3.1) (2025-12-26)
+
+### Build System
+
+* update release action to use oidc ([c882f44](https://github.com/OneSignal/onesignal-ngx/commit/c882f4498f166b0b45c26960895dc43707e2a6ae))
+
 ## [2.3.0](https://github.com/OneSignal/onesignal-ngx/compare/2.2.2...2.3.0) (2025-09-19)
 
 ### Features
