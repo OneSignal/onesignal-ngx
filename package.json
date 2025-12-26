@@ -35,11 +35,9 @@
     "bundles/",
     "lib/",
     "fesm2015/",
+    "esm2015/",
     "*.d.ts",
-    "*.metadata.json",
-    "LICENSE",
-    "README.md",
-    "MigrationGuide.md"
+    "*.metadata.json"
   ],
   "metadata": "onesignal-ngx.metadata.json"
 }
