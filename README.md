@@ -122,7 +122,7 @@ You can pass other [options](https://documentation.onesignal.com/docs/web-sdk-re
 | `[key: string]`                  | `any`                | Additional properties can be added as needed.            |
 
 **Service Worker Params**
-You can customize the location and filenames of service worker assets. You are also able to specify the specific scope that your service worker should control. You can read more [here](https://documentation.onesignal.com/docs/onesignal-service-worker-faq#sdk-parameter-reference-for-service-workers).
+You can customize the location and filenames of service worker assets. You are also able to specify the specific scope that your service worker should control. You can read more [here](https://documentation.onesignal.com/docs/onesignal-service-worker#custom-code-setup).
 
 In this distribution, you can specify the parameters via the following:
 
@@ -149,7 +149,7 @@ this.oneSignal.init({
 
 ### Service Worker File
 
-If you haven't done so already, you will need to add the [OneSignal Service Worker file](https://github.com/OneSignal/OneSignal-Website-SDK/files/11480764/OneSignalSDK-v16-ServiceWorker.zip) to your site ([learn more](https://documentation.onesignal.com/docs/web-push-quickstart#step-6-upload-files)).
+If you haven't done so already, you will need to add the [OneSignal Service Worker file](https://github.com/OneSignal/OneSignal-Website-SDK/files/11480764/OneSignalSDK-v16-ServiceWorker.zip) to your site ([learn more](https://documentation.onesignal.com/docs/onesignal-service-worker#upload-the-js-file-to-your-server)).
 
 The OneSignal SDK file must be publicly accessible. You can put it in your top-level root or a subdirectory. However, if you are placing the file not on top-level root make sure to specify the path via the service worker params in the init options (see section above).
 
@@ -222,7 +222,7 @@ this.oneSignal.Notifications.addEventListener('click', (event) => {
 });
 ```
 
-See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-sdk-reference#addeventlistener-push-notification) for more info on the available event listeners.
+See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/web-sdk-reference#addeventlistener-notifications) for more info on the available event listeners.
 
 ## Troubleshooting
 
@@ -230,7 +230,7 @@ See the [OneSignal WebSDK Reference](https://documentation.onesignal.com/docs/we
 
 #### Check the `serviceWorker` flag
 
-In your `angular.json`, see if the `serviceWorker` flag is set to `true`. The flag is used to cause the production build to include some extra service worker files that will conflict with the OneSignal worker if they use the same scope. If your web app depends on this flag being true and hence the Angular service worker (`ngsw-worker.js`) like in PWA setups, you should customize your OneSignal service worker integration to use a different scope than the Angular service worker. Otherwise, they will conflict. This can be done using the service worker OneSignal initialization params documented above. [Click for further details](https://documentation.onesignal.com/docs/troubleshooting-web-push#pwa-or-multiple-service-workers).
+In your `angular.json`, see if the `serviceWorker` flag is set to `true`. The flag is used to cause the production build to include some extra service worker files that will conflict with the OneSignal worker if they use the same scope. If your web app depends on this flag being true and hence the Angular service worker (`ngsw-worker.js`) like in PWA setups, you should customize your OneSignal service worker integration to use a different scope than the Angular service worker. Otherwise, they will conflict. This can be done using the service worker OneSignal initialization params documented above. [Click for further details](https://documentation.onesignal.com/docs/onesignal-service-worker).
 
 ---
 
