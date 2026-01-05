@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.2](https://github.com/OneSignal/onesignal-ngx/compare/2.3.1...2.3.2) (2026-01-05)
+
+### Bug Fixes
+
+* update init object interface ([93a0108](https://github.com/OneSignal/onesignal-ngx/commit/93a010855b9cfe98221c7407b15e79f905739c3d))
+
 ## [2.3.1](https://github.com/OneSignal/onesignal-ngx/compare/2.3.0...2.3.1) (2025-12-26)
 
 ### Build System
