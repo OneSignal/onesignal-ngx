@@ -805,16 +805,11 @@
         return isPushNotificationsSupported();
     }
     var ONESIGNAL_SDK_ID = 'onesignal-sdk';
-    var ONE_SIGNAL_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
-    // true if the script is successfully loaded from CDN.
+    var DEFAULT_SCRIPT_SRC = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js';
     var isOneSignalInitialized = false;
-    // true if the script fails to load from CDN. A separate flag is necessary
-    // to disambiguate between a CDN load failure and a delayed call to
-    // OneSignal#init.
     var isOneSignalScriptFailed = false;
     if (typeof window !== 'undefined') {
         window.OneSignalDeferred = window.OneSignalDeferred || [];
-        addSDKScript();
     }
     /**
      * The following code is copied directly from the native SDK source file BrowserSupportsPush.ts
@@ -844,11 +839,14 @@
     function handleOnError() {
         isOneSignalScriptFailed = true;
     }
-    function addSDKScript() {
+    function addSDKScript(scriptSrc) {
+        if (document.getElementById(ONESIGNAL_SDK_ID)) {
+            return;
+        }
         var script = document.createElement('script');
         script.id = ONESIGNAL_SDK_ID;
         script.defer = true;
-        script.src = ONE_SIGNAL_SCRIPT_SRC;
+        script.src = scriptSrc || DEFAULT_SCRIPT_SRC;
         // Always resolve whether or not the script is successfully initialized.
         // This is important for users who may block cdn.onesignal.com w/ adblock.
         script.onerror = function () {
@@ -887,6 +885,7 @@
             if (((_a = options.welcomeNotification) === null || _a === void 0 ? void 0 : _a.disabled) !== undefined) {
                 options.welcomeNotification.disable = options.welcomeNotification.disabled;
             }
+            addSDKScript(options.scriptSrc);
             return new Promise(function (resolve, reject) {
                 var _a;
                 (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push(function (oneSignal) {
