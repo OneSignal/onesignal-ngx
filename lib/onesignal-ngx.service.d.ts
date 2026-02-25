@@ -316,6 +316,13 @@ export interface IInitObject {
     };
     serviceWorkerPath?: string;
     serviceWorkerOverrideForTypical?: boolean;
+    /**
+     * Overrides the default OneSignal SDK script URL.
+     * Use this to self-host the SDK script on your own domain, e.g. to comply
+     * with strict Cross-Origin-Embedder-Policy (COEP) or Content-Security-Policy (CSP) headers.
+     * @default 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js'
+     */
+    scriptSrc?: string;
     [key: string]: unknown;
 }
 export interface IOneSignalOneSignal {
