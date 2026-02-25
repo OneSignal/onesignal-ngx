@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.0](https://github.com/OneSignal/onesignal-ngx/compare/2.3.2...2.4.0) (2026-02-25)
+
+### Features
+
+* add support for overriding OneSignal script src ([d253126](https://github.com/OneSignal/onesignal-ngx/commit/d25312667f597912b2bca4a6649b8d019c886581))
+
 ## [2.3.2](https://github.com/OneSignal/onesignal-ngx/compare/2.3.1...2.3.2) (2026-01-05)
 
 ### Bug Fixes
