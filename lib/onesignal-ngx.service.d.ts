@@ -105,6 +105,9 @@ export interface IOSNotificationActionButton {
      */
     readonly launchURL?: string;
 }
+export interface IDisplayableOSNotification extends IOSNotification {
+    display(): void;
+}
 export interface NotificationClickResult {
     readonly actionId?: string;
     readonly url?: string;
@@ -117,7 +120,7 @@ export declare type NotificationEventTypeMap = {
     'permissionPromptDisplay': void;
 };
 export interface NotificationForegroundWillDisplayEvent {
-    readonly notification: IOSNotification;
+    readonly notification: IDisplayableOSNotification;
     preventDefault(): void;
 }
 export interface NotificationDismissEvent {
