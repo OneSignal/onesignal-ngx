@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.2](https://github.com/OneSignal/onesignal-ngx/compare/2.4.1...2.4.2) (2026-05-18)
+
+### Build System
+
+* migrate to vite-plus toolchain ([5215fa3](https://github.com/OneSignal/onesignal-ngx/commit/5215fa348105c2a8970fc0f713431e1012d4b4b4))
+
 ## [2.4.1](https://github.com/OneSignal/onesignal-ngx/compare/2.4.0...2.4.1) (2026-02-27)
 
 ### Build System
