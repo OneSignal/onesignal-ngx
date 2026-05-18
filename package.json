@@ -39,5 +39,6 @@
     "*.d.ts",
     "*.metadata.json"
   ],
+  "packageManager": "bun@1.3.13",
   "metadata": "onesignal-ngx.metadata.json"
 }
