@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.3](https://github.com/OneSignal/onesignal-ngx/compare/2.4.2...2.4.3) (2026-06-01)
+
+### Bug Fixes
+
+* reject init() when push is unsupported or script fails to load ([c4243ce](https://github.com/OneSignal/onesignal-ngx/commit/c4243cec399525536a7acdce3c5eea41e03435ba))
+
 ## [2.4.2](https://github.com/OneSignal/onesignal-ngx/compare/2.4.1...2.4.2) (2026-05-18)
 
 ### Build System
