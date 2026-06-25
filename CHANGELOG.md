@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.4](https://github.com/OneSignal/onesignal-ngx/compare/2.4.3...2.4.4) (2026-06-25)
+
+### Build System
+
+* sync with web-shim-codegen v3.0.8 ([b6f07d3](https://github.com/OneSignal/onesignal-ngx/commit/b6f07d3ac0aebffb20ad9f656b02c877f6e031ae))
+
 ## [2.4.3](https://github.com/OneSignal/onesignal-ngx/compare/2.4.2...2.4.3) (2026-06-01)
 
 ### Bug Fixes
