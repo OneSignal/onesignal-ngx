@@ -30,6 +30,20 @@ function oneSignalLogout() {
         });
     });
 }
+function oneSignalUpdateUserJwt(externalId, token) {
+    return new Promise((resolve, reject) => {
+        var _a;
+        if (isOneSignalScriptFailed) {
+            reject(new Error('OneSignal script failed to load.'));
+            return;
+        }
+        (_a = window.OneSignalDeferred) === null || _a === void 0 ? void 0 : _a.push((oneSignal) => {
+            oneSignal.updateUserJwt(externalId, token)
+                .then(() => resolve())
+                .catch(error => reject(error));
+        });
+    });
+}
 function oneSignalSetConsentGiven(consent) {
     return new Promise((resolve, reject) => {
         var _a;
@@ -514,6 +528,7 @@ class OneSignal {
         this.Notifications = NotificationsNamespace;
         this.login = oneSignalLogin;
         this.logout = oneSignalLogout;
+        this.updateUserJwt = oneSignalUpdateUserJwt;
         this.setConsentGiven = oneSignalSetConsentGiven;
         this.setConsentRequired = oneSignalSetConsentRequired;
     }
