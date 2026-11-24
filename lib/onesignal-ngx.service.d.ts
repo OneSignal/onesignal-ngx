@@ -133,6 +133,14 @@ export interface NotificationClickEvent {
 export declare type UserChangeEvent = {
     current: UserNamespaceProperties;
 };
+export declare type UserJwtInvalidatedEvent = {
+    externalId: string;
+};
+export declare type UserEventName = 'change' | 'userJwtInvalidated';
+export declare type UserEventTypeMap = {
+    change: UserChangeEvent;
+    userJwtInvalidated: UserJwtInvalidatedEvent;
+};
 export declare type UserNamespaceProperties = {
     onesignalId: string | undefined;
     externalId: string | undefined;
@@ -336,6 +344,7 @@ export interface IOneSignalOneSignal {
     Debug: IOneSignalDebug;
     login(externalId: string, jwtToken?: string): Promise<void>;
     logout(): Promise<void>;
+    updateUserJwt(externalId: string, token: string): Promise<void>;
     init(options: IInitObject): Promise<void>;
     setConsentGiven(consent: boolean): Promise<void>;
     setConsentRequired(requiresConsent: boolean): Promise<void>;
@@ -389,8 +398,8 @@ export interface IOneSignalUser {
     getTags(): {
         [key: string]: string;
     };
-    addEventListener(event: 'change', listener: (change: UserChangeEvent) => void): void;
-    removeEventListener(event: 'change', listener: (change: UserChangeEvent) => void): void;
+    addEventListener<K extends UserEventName>(event: K, listener: (obj: UserEventTypeMap[K]) => void): void;
+    removeEventListener<K extends UserEventName>(event: K, listener: (obj: UserEventTypeMap[K]) => void): void;
     setLanguage(language: string): void;
     getLanguage(): string;
     trackEvent(name: string, properties?: Record<string, unknown>): void;
@@ -406,6 +415,7 @@ export interface IOneSignalPushSubscription {
 }
 declare function oneSignalLogin(externalId: string, jwtToken?: string): Promise<void>;
 declare function oneSignalLogout(): Promise<void>;
+declare function oneSignalUpdateUserJwt(externalId: string, token: string): Promise<void>;
 declare function oneSignalSetConsentGiven(consent: boolean): Promise<void>;
 declare function oneSignalSetConsentRequired(requiresConsent: boolean): Promise<void>;
 declare global {
@@ -434,6 +444,7 @@ export declare class OneSignal implements IOneSignalOneSignal {
     Notifications: IOneSignalNotifications;
     login: typeof oneSignalLogin;
     logout: typeof oneSignalLogout;
+    updateUserJwt: typeof oneSignalUpdateUserJwt;
     setConsentGiven: typeof oneSignalSetConsentGiven;
     setConsentRequired: typeof oneSignalSetConsentRequired;
 }

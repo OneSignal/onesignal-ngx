@@ -174,6 +174,7 @@ class OneSignal {
   Debug: IOneSignalDebug;
   login(externalId: string, jwtToken?: string): Promise<void>;
   logout(): Promise<void>;
+  updateUserJwt(externalId: string, token: string): Promise<void>;
   init(options: IInitObject): Promise<void>;
   setConsentGiven(consent: boolean): Promise<void>;
   setConsentRequired(requiresConsent: boolean): Promise<void>;
@@ -213,6 +214,13 @@ Use listeners to react to OneSignal-related events:
 | Event Name | Callback Argument Type |
 | ---------- | ---------------------- |
 | 'change'   | boolean                |
+
+### User Namespace
+
+| Event Name           | Callback Argument Type  |
+| -------------------- | ----------------------- |
+| 'change'             | UserChangeEvent         |
+| 'userJwtInvalidated' | UserJwtInvalidatedEvent |
 
 **Example**
 
